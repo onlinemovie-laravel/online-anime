@@ -19,7 +19,6 @@ class CreateAnimeTable extends Migration
             $table->string('status');
             $table->string('type');
             $table->string('season');
-            $table->date('open_date');
             $table->string('image');
             $table->string('description');
             $table->integer('day_views');

@@ -16,7 +16,7 @@ class CreateUseranimeTable extends Migration
         Schema::create('user-anime', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('anime_id');
             $table->foreign('anime_id')->references('id')->on('anime');
             $table->timestamps();

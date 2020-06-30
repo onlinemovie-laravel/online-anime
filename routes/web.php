@@ -46,6 +46,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','UserController@destroy')->name('destroy');
     });
+    Route::prefix('anime')->name('anime.')->group(function () { 
+        Route::get('index','AnimeController@index')->name('index');
+
+        Route::get('register','AnimeController@create')->name('register'); 
+        Route::post('store','AnimeController@store')->name('store');  
+
+        Route::get('edit/{id}','AnimeController@edit')->name('edit');
+        Route::post('update/{id}','AnimeController@update')->name('update'); 
+
+        Route::get('destroy/{id}','AnimeController@destroy')->name('destroy');
+    });
 });
 // login-logout
 Auth::routes();
