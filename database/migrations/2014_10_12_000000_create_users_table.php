@@ -1,4 +1,4 @@
-php artisan migrate<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,12 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
             $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('email');
-            $table->integer('gender');
-            $table->integer('user_type');
+            $table->string('birthday')->nullable();
+            $table->integer('gender')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('lv')->default(1);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

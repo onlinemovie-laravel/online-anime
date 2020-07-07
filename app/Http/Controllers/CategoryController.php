@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Datetime;
-class AnimeController extends Controller
+use Illuminate\Http\Request;
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('anime')->orderBy('id','DESC')->where('id', '<>', 1)->get();
-    
-        return view('cpadmin.modules.anime.index',['anime'=>$data]);
+        $data = DB::table('category')->orderBy('id','DESC')->get();
+        return view('cpadmin.modules.category.index',['category'=>$data]);
     }
 
     /**
@@ -26,7 +26,7 @@ class AnimeController extends Controller
      */
     public function create()
     {
-        return view('cpadmin.modules.anime.create');
+        return view('cpadmin.modules.category.create');
     }
 
     /**
@@ -38,12 +38,14 @@ class AnimeController extends Controller
     public function store(Request $request)
     {
         $data =($request->except('_token'));
+        $data['name'] = trim($data['name']);
+        $data['name'] = str_replace(' ','-',$data['name']);
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
         // dd($data);
-         DB::table('anime')->insert($data); 
+         DB::table('category')->insert($data); 
 
-         return redirect()->route('admin.anime.index');
+         return redirect()->route('admin.category.index');
     }
 
     /**
@@ -54,7 +56,7 @@ class AnimeController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -65,9 +67,8 @@ class AnimeController extends Controller
      */
     public function edit($id)
     {
-        $cate = DB::table('anime')->where('id',$id)->first();
-
-        return view('cpadmin.modules.anime.edit',['item'=>$cate]);
+        $cate = DB::table('category')->where('id',$id)->first();
+        return view('cpadmin.modules.category.edit',['item'=>$cate]);
     }
 
     /**
@@ -81,10 +82,12 @@ class AnimeController extends Controller
     {
         $data =($request->except('_token'));
         $data['updated_at'] = new DateTime();
-     
-        DB::table('anime')->where('id',$id)->update($data); 
+        $data['name'] = trim($data['name']);
+        $data['name'] = str_replace(' ','-',$data['name']);
+        CategoryController::changcategory($id,$data['name']);
+        DB::table('category')->where('id',$id)->update($data); 
 
-        return redirect()->route('admin.anime.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -95,8 +98,21 @@ class AnimeController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('anime')->where('id',$id)->delete();
+        CategoryController::changcategory($id,' ');
+        DB::table('category')->where('id',$id)->delete();
 
-        return redirect()->route('admin.anime.index');
+        return redirect()->route('admin.category.index');
+    }
+
+    public function changcategory($id,$change){
+        $da = DB::table('category')->where('id',$id)->get();
+        $name = $da[0]->name;
+        $cate = DB::table('flim')->where('category', 'like', '%'.$name.'%')->get();
+        if ($cate->count() == 0) {           
+        } else {
+            foreach($cate as $item){                
+                DB::table('flim')->where('id',$item->id)->update(['category'=>str_replace($name,$change,$item->category)]);
+            }
+        }
     }
 }

@@ -19,10 +19,6 @@
                   <tr>
                      <th>ID</th>
                      <th>Name</th>
-                     <th>Status</th>
-                     <th>Type</th>
-                     <th>Season</th>
-                     <th>Image</th>
                      <th>Description</th>
                      <th>created_at</th>
                      <th>EDIT</th>
@@ -30,18 +26,14 @@
                   </tr>
                </thead>
                <tbody>
-                   @foreach ($anime as $item)
+                   @foreach ($category as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->status}}</td>
-                        <td>{{$item->type}}</td>
-                        <td>{{$item->season}}</td>
-                        <td>{{$item->image}}</td>
+                        <td>{{ str_replace('-',' ',$item->name)}}</td>
                         <td>{{$item->description}}</td>
-                        <td> {{date("d/m/Y",strtotime($item->created_at))}}</td>
-                        <td><a href="{{Route('admin.anime.edit',['id'=>$item->id])}}">EDIT</a></td>
-                        <td><a href="{{Route('admin.anime.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
+                        <td> {{date("d/m/Y-h:i:s",strtotime($item->created_at))}}</td>
+                        <td><a href="{{Route('admin.category.edit',['id'=>$item->id])}}">EDIT</a></td>
+                        <td><a href="{{Route('admin.category.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
                     </tr>         
                     @endforeach    
                </tbody>
@@ -49,10 +41,6 @@
                 <tr>
                     <th>ID</th>
                      <th>Name</th>
-                     <th>Status</th>
-                     <th>Type</th>
-                     <th>Season</th>
-                     <th>Image</th>
                      <th>Description</th>
                      <th>created_at</th>
                      <th>EDIT</th>

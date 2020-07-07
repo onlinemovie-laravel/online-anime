@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnimecateTable extends Migration
+class CreateBoxflimTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAnimecateTable extends Migration
      */
     public function up()
     {
-        Schema::create('anime-cate', function (Blueprint $table) {
+        Schema::create('boxflim', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('anime_id');
-            $table->foreign('anime_id')->references('id')->on('anime');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->unsignedBigInteger('flim_id');
+            $table->foreign('flim_id')->references('id')->on('flim');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateAnimecateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anime-cate');
+        Schema::dropIfExists('boxflim');
     }
 }

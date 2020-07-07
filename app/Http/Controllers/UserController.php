@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Datetime;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = DB::table('users')->orderBy('id','DESC')->where('id', '<>', 1)->get();
+        $data = DB::table('users')->orderBy('id','DESC')->where('lv', '<>', 9)->get();
     
         return view('cpadmin.modules.user.index',['user'=>$data]);
     }
@@ -40,6 +40,7 @@ class UserController extends Controller
         $data =($request->except('_token'));
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
+        $data['password'] = Hash::make($data['password']);
         // dd($data);
          DB::table('users')->insert($data); 
 

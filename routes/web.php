@@ -46,16 +46,27 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','UserController@destroy')->name('destroy');
     });
-    Route::prefix('anime')->name('anime.')->group(function () { 
-        Route::get('index','AnimeController@index')->name('index');
+    Route::prefix('category')->name('category.')->group(function () { 
+        Route::get('index','CategoryController@index')->name('index');
 
-        Route::get('register','AnimeController@create')->name('register'); 
-        Route::post('store','AnimeController@store')->name('store');  
+        Route::get('create','CategoryController@create')->name('create'); 
+        Route::post('store','CategoryController@store')->name('store');  
 
-        Route::get('edit/{id}','AnimeController@edit')->name('edit');
-        Route::post('update/{id}','AnimeController@update')->name('update'); 
+        Route::get('edit/{id}','CategoryController@edit')->name('edit');
+        Route::post('update/{id}','CategoryController@update')->name('update'); 
 
-        Route::get('destroy/{id}','AnimeController@destroy')->name('destroy');
+        Route::get('destroy/{id}','Categorycontroller@destroy')->name('destroy');
+    });
+    Route::prefix('flim')->name('flim.')->group(function () { 
+        Route::get('index','FlimController@index')->name('index');
+
+        Route::get('create','FlimController@create')->name('create'); 
+        Route::post('store','FlimController@store')->name('store');  
+
+        Route::get('edit/{id}','FlimController@edit')->name('edit');
+        Route::post('update/{id}','FlimController@update')->name('update'); 
+
+        Route::get('destroy/{id}','FlimController@destroy')->name('destroy');
     });
 });
 // login-logout

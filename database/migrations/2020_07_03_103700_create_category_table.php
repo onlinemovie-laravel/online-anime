@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEpisodeTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateEpisodeTable extends Migration
      */
     public function up()
     {
-        Schema::create('episode', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('anime_id');
-            $table->foreign('anime_id')->references('id')->on('anime');
-            $table->integer('episode');
-            $table->string('episode_name');
-            $table->string('content');
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateEpisodeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('episode');
+        Schema::dropIfExists('category');
     }
 }

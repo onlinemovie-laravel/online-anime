@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnimeTable extends Migration
+class CreateFlimTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateAnimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('anime', function (Blueprint $table) {
+        Schema::create('flim', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('status');
-            $table->string('type');
-            $table->string('season');
+            $table->longText('description')->nullable();
+            $table->string('category');
+            $table->string('subname')->nullable();
             $table->string('image');
-            $table->string('description');
-            $table->integer('day_views');
-            $table->integer('total_views');
+            $table->integer('total_chap')->nullable();
+            $table->boolean('status')->default(1);
+            $table->integer('total_views')->nullable();
+            $table->integer('year')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateAnimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anime');
+        Schema::dropIfExists('flim');
     }
 }

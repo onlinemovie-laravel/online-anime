@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUseranimeTable extends Migration
+class CreateCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUseranimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('user-anime', function (Blueprint $table) {
+        Schema::create('comment', function (Blueprint $table) {
             $table->id();
+            $table->string('content');
+            $table->unsignedBigInteger('flim_id');
+            $table->foreign('flim_id')->references('id')->on('flim');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('anime_id');
-            $table->foreign('anime_id')->references('id')->on('anime');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateUseranimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-anime');
+        Schema::dropIfExists('comment');
     }
 }
