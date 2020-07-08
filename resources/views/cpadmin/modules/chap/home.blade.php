@@ -7,7 +7,12 @@
         <div class="widget-title">
             <h3 class="title">Anime Mới Cập Nhật</h3>
         </div>
-        <div class="clear"></div>
+        <div class="row">
+            <p class="col-md-2 col-md-offset-5  mx-auto">
+              <button id="btn" class="btn btn-danger btn-block m-2" onclick="javascript:loaddata();">MORE</button>
+              <!-- <button id="dbtn" class="btn btn-danger btn-block m-2 disabled">NO MORE</button> -->
+            </p>
+          </div>
         <div class="last-film-box-wrapper">
             <div class="content" data-name="all">
                 <ul class="last-film-box" id="movie-last-movie">

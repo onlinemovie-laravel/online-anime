@@ -1,11 +1,12 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Datetime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-class UserController extends Controller
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = DB::table('users')->orderBy('id','DESC')->where('lv', '<>', 9)->get();
-    
-        return view('cpadmin.modules.user.index',['user'=>$data]);
+        $data = DB::table('category')->orderBy('id','DESC')->get();
+        return view('cpadmin.modules.category.index',['category'=>$data]);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('cpadmin.modules.user.create');
+        return view('cpadmin.modules.category.create');
     }
 
     /**
@@ -38,13 +38,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data =($request->except('_token'));
+        $data['name'] = trim($data['name']);
+        $data['name'] = str_replace(' ','-',$data['name']);
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
-        $data['password'] = Hash::make($data['password']);
         // dd($data);
-         DB::table('users')->insert($data); 
+         DB::table('category')->insert($data); 
 
-         return redirect()->route('admin.user.index');
+         return redirect()->route('admin.category.index');
     }
 
     /**
@@ -55,7 +56,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -66,9 +67,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $cate = DB::table('users')->where('id',$id)->first();
-
-        return view('cpadmin.modules.user.edit',['item'=>$cate]);
+        $cate = DB::table('category')->where('id',$id)->first();
+        return view('cpadmin.modules.category.edit',['item'=>$cate]);
     }
 
     /**
@@ -82,10 +82,12 @@ class UserController extends Controller
     {
         $data =($request->except('_token'));
         $data['updated_at'] = new DateTime();
-     
-        DB::table('users')->where('id',$id)->update($data); 
+        $data['name'] = trim($data['name']);
+        $data['name'] = str_replace(' ','-',$data['name']);
+        CategoryController::changcategory($id,$data['name']);
+        DB::table('category')->where('id',$id)->update($data); 
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -96,8 +98,21 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id',$id)->delete();
+        CategoryController::changcategory($id,' ');
+        DB::table('category')->where('id',$id)->delete();
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.category.index');
+    }
+
+    public function changcategory($id,$change){
+        $da = DB::table('category')->where('id',$id)->get();
+        $name = $da[0]->name;
+        $cate = DB::table('flim')->where('category', 'like', '%'.$name.'%')->get();
+        if ($cate->count() == 0) {           
+        } else {
+            foreach($cate as $item){                
+                DB::table('flim')->where('id',$item->id)->update(['category'=>str_replace($name,$change,$item->category)]);
+            }
+        }
     }
 }

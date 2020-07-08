@@ -1,5 +1,5 @@
-@extends('index')
+@extends('welcome')
 @section('top-content')
-<div itemscope itemtype="https://schema.org/VideoObject"><meta itemprop="uploadDate" content="Tue Jun 09 2020 21:38:16 GMT+0700 (Indochina Time)"/><meta itemprop="name" content="Wlop designer"/><meta itemprop="duration" content="PT34S" /><meta itemprop="thumbnailUrl" content="https://content.jwplatform.com/thumbs/FjImBZNJ-1280.jpg"/><meta itemprop="contentUrl" content="https://content.jwplatform.com/videos/FjImBZNJ-ZUxenC5W.mp4"/><div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe src="https://cdn.jwplayer.com/players/FjImBZNJ-eFvNO8QX.html" width="100%" height="100%" frameborder="0" scrolling="auto" title="Wlop designer" style="position:absolute;" allowfullscreen></iframe> </div></div> \
-<iframe src="" frameborder="0"></iframe> 
+
+<script src="https://cdn.jwplayer.com/players/5D7x83yU-eFvNO8QX.js"></script>
 @endsection

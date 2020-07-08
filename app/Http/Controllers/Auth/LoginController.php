@@ -29,9 +29,13 @@ class LoginController extends Controller
     protected $redirectTo ;
     public function redirectTo()
     {
-        switch(Auth::user()->id){     
-            case 1:
+        switch(Auth::user()->lv){     
+            case 9:
                 $this->redirectTo = '/admin';
+                return $this->redirectTo;
+                break;
+            case 1:
+                $this->redirectTo = '/';
                 return $this->redirectTo;
                 break;
             default:

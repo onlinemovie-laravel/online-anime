@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Datetime;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,11 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-        return view('index');
-        
+        $data = DB::table('flim')->orderBy('created_at','DESC')->get();
+
+        return view('index',['collectionlastmovie'=>$data]);  
     }
     public function home(){
-        return view('admin.index');
+         return redirect()->route('admin.flim.index');
     }
 }

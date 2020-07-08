@@ -19,27 +19,21 @@
                   <tr>
                      <th>ID</th>
                      <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
+                     <th>Description</th>
                      <th>created_at</th>
                      <th>EDIT</th>
                      <th>Delete</th>
                   </tr>
                </thead>
                <tbody>
-                   @foreach ($user as $item)
+                   @foreach ($category as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->password}}</td>
-                        <td>{{$item->address}}</td>
-                        <td>{{$item->phone}}</td>
+                        <td>{{ str_replace('-',' ',$item->name)}}</td>
+                        <td>{{$item->description}}</td>
                         <td> {{date("d/m/Y-h:i:s",strtotime($item->created_at))}}</td>
-                        <td><a href="{{Route('admin.user.edit',['id'=>$item->id])}}">EDIT</a></td>
-                        <td><a href="{{Route('admin.user.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
+                        <td><a href="{{Route('admin.category.edit',['id'=>$item->id])}}">EDIT</a></td>
+                        <td><a href="{{Route('admin.category.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
                     </tr>         
                     @endforeach    
                </tbody>
@@ -47,10 +41,7 @@
                 <tr>
                     <th>ID</th>
                      <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
+                     <th>Description</th>
                      <th>created_at</th>
                      <th>EDIT</th>
                      <th>Delete</th>

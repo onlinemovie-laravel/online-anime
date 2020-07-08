@@ -18,7 +18,7 @@ class Admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        if (Auth::user()->id == 1) {
+        if (Auth::user()->lv == 1) {
             return redirect()->route('admin');
         }
     }

@@ -1,5 +1,5 @@
 @extends('cpadmin.master')
-@section('title','Index')
+@section('title','List Chap')
 @section('content')
 <section class="content">
     <!-- Default box -->
@@ -17,40 +17,39 @@
             <table id="example1" class="table table-bordered table-striped">
                <thead>
                   <tr>
-                     <th>ID</th>
-                     <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
-                     <th>created_at</th>
-                     <th>EDIT</th>
-                     <th>Delete</th>
+                    <th>ID</th>
+                    <th>content</th>
+                    <th>Name</th>
+                    <th>Flim ID</th>
+                    <th>views</th>
+                    <th>created_at</th>
+                    <th>EDIT</th>
+                    <th>Delete</th>
                   </tr>
                </thead>
                <tbody>
-                   @foreach ($user as $item)
+                   @foreach ($chapter as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->password}}</td>
-                        <td>{{$item->address}}</td>
-                        <td>{{$item->phone}}</td>
+                        <td width="250px" height="150px">
+                            {{-- <script src="https://cdn.jwplayer.com/players/{{$item->content}}-kGWxh33Q.js"></script></td> --}}
+                            <script src="https://cdn.jwplayer.com/players/{{$item->content}}-eFvNO8QX.js"></script> </td>
+                        <td>{{ str_replace('-',' ',$item->title)}}</td>
+                        <td>{{$item->flim_id}}</td>
+                        <td>{{$item->views}}</td>
                         <td> {{date("d/m/Y-h:i:s",strtotime($item->created_at))}}</td>
-                        <td><a href="{{Route('admin.user.edit',['id'=>$item->id])}}">EDIT</a></td>
-                        <td><a href="{{Route('admin.user.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
+                        <td><a href="{{Route('admin.chapter.edit',['id'=>$item->id])}}">EDIT</a></td>
+                        <td><a href="{{Route('admin.chapter.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this Chapter ?')">DELETE</a></td>
                     </tr>         
                     @endforeach    
                </tbody>
                <tfoot>
                 <tr>
                     <th>ID</th>
+                     <th>content</th>
                      <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
+                     <th>Flim ID</th>
+                     <th>views</th>
                      <th>created_at</th>
                      <th>EDIT</th>
                      <th>Delete</th>

@@ -9,11 +9,11 @@
                     <div class="row">
                         <div class="col-6 movie-image">
                             <div class="movie-l-img">
-                                <img itemprop="image" alt="Fruits Basket 2nd Season- Fruits Basket (2019) 2nd Season, Furuba, Fruits Basket (Zenpen)" src="https://img.anime47.com/imgur/dZligE2.jpg" style="width:100%;height:100%;">
+                                <img itemprop="image" alt="{{$flim->name}}" src="{{$flim->image}}" style="width:100%;height:100%;">
                                 <h2 class="hidden mt-2"></h2>
                                 <ul class="btn btn-block">
                                     <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" href="javascript:void(0)" onclick="return favo(1,7551)" title="Đánh Dấu"> Thêm Vào Hộp</a></li>
-                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="Xem ANIME Fruits Basket 2nd Season - Fruits Basket (2019) 2nd Season, Furuba, Fruits Basket (Zenpen)" href="{{Route('play')}}">Xem Anime</a></li>
+                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{Route('play')}}">Xem Anime</a></li>
                                 </ul>
                             </div>
                             <!-- Bookmark-->
@@ -22,26 +22,35 @@
                             <!-- // Bookmark-->
                         </div>
                         <div class="col-6 movie-detail">
-                            <h1 class="movie-title"><span class="title-1" itemprop="name">Fruits Basket 2nd Season</span><span class="title-2" itemprop="name">Fruits Basket (2019) 2nd Season, Furuba, Fruits Basket (Zenpen)</span><span class="title-year"> (07/04/2020)</span></h1>
+                            <h1 class="movie-title"><span class="title-1" itemprop="name">{{$flim->name}}</span><span class="title-2" itemprop="name">{{$flim->subname}}</span><span class="title-year"> ({{date("d/m/Y",strtotime($flim->created_at))}})</span></h1>
                             <div class="movie-meta-info">
                                 <dl class="movie-dl">
                                     <dt class="movie-dt">Trạng thái: </dt>
-                                    <dd class="movie-dd imdb">09+10/??</dd>
+                                    <dd class="movie-dd imdb">09+10/{{$flim->total_chap}} Tập</dd>
                                     <br>
                                     <dt class="movie-dt">Thể loại: </dt>
-                                    <dd class="movie-dd dd-cat"><a href="./the-loai/hai-huoc-24/1.html">Hài Hước</a>, <a href="./the-loai/drama-31/1.html">Drama</a>, <a href="./the-loai/doi-thuong-38/1.html">Đời Thường</a>, <a href="./the-loai/romance-40/1.html">Romance</a>, <a href="./the-loai/fantasy-45/1.html">Fantasy</a>, <a href="./the-loai/shoujo-49/1.html">Shoujo</a></dd>
+                                    <dd class="movie-dd dd-cat">
+                                        @foreach( explode(' ', $flim->category) as $sub)
+                                            @if (strlen($sub) > 0)
+                                            <a  href="{{Route('page.pagecate',['name'=>$sub])}}">{{ str_replace('-',' ',$sub)}}</a> 
+                                            {{-- <a  href="/page/category/{{$sub}}">{{ str_replace('-',' ',$sub)}}</a>, --}}
+                                            @else
+                                                
+                                            @endif
+                                        
+                                        @endforeach</dd>
                                     <br>
-                                    <dt class="movie-dt">Dạng Anime: </dt>
-                                    <dd class="movie-dd"><a href="danh-sach/tv-series/1.html">TV Series</a></dd>
+                                    <dt class="movie-dt">Tập Mới Nhất: </dt>
+                                    <dd class="movie-dd">Tập 10</dd>
                                     <br>		
-                                    <dt class="movie-dt">Season: </dt>
-                                    <dd class="movie-dd"><a href="https://anime47.com/tim-nang-cao/?status=&amp;season=5&amp;year=07/04/2020&amp;sort=popular"> Mùa Xuân  Năm 07/04/2020</a></dd>
+                                    <dt class="movie-dt">Ngày Đăng: </dt>
+                                    <dd class="movie-dd">{{date("d/m/Y",strtotime($flim->created_at))}}</dd>
                                     <br>		
-                                    <dt class="movie-dt">Năm: </dt>
-                                    <dd class="movie-dd"><a href="https://anime47.com/tim-nang-cao/?status=&amp;season=&amp;year=07/04/2020&amp;sort=popular">07/04/2020</a></dd>
+                                    <dt class="movie-dt">Năm SX: </dt>
+                                    <dd class="movie-dd"><a href="{{Route('page.yearpage',['year' => $flim->year])}}">{{$flim->year}}</a></dd>
                                     <br>		
                                     <dt class="movie-dt">Lượt Xem: </dt>
-                                    <dd class="movie-dd">184590 Lượt xem</dd>
+                                    <dd class="movie-dd">{{$flim->total_views}} Lượt xem</dd>
                                     <br>		
                                     <!-- <dt class="movie-dt">Score:</dt> <dd class="movie-dd imdb">{film.SCORE}</dd><br /> -->
                                 </dl>
@@ -81,7 +90,7 @@
                     <div class="content" id="film-content" itemscope="" itemtype="http://schema.org/Review" itemprop="review">
                         <div class="news-article">
                             <p></p>
-                            <p>Đã gần một năm kể từ khi Tooru bắt đầu sống tại nhà của Shigure! Mặc dù hiện tại cô có mối quan hệ sâu sắc hơn với mỗi Soumas, không chỉ riêng Yuuki và Kyou, cô quan tâm đến bản chất thực sự của lời nguyền độc ác của họ. Con đường đúng đắn để lựa chọn, định trước định mệnh, những cảm xúc nào sẽ nảy sinh trong Yuuki, Kyou và Tooru khi đối mặt với bữa tiệc vĩnh cửu? Điều gì sẽ được giải quyết của họ? (Nguồn: Funimation, chỉnh sửa)</p>
+                            <p>{{$flim->description}}</p>
                             <p></p>
                         </div>
                         <p>Chúc các bạn <a href="https://anime47.com/" title="ANIME VIETSUB ONLINE | ANIME MÙA | ANIME HAY | ANIME TOP | XEM ANIME ONLINE | ANIME47.COM">xem anime vietsub</a> vui vẻ tại ANIME47.COM</p>

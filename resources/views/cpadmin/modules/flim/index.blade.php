@@ -1,5 +1,5 @@
 @extends('cpadmin.master')
-@section('title','Index')
+@section('title','List Flim')
 @section('content')
 <section class="content">
     <!-- Default box -->
@@ -18,39 +18,42 @@
                <thead>
                   <tr>
                      <th>ID</th>
+                     <th>Image</th>
                      <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
+                     <th>Description</th>
+                     <th>Category</th>
+                     <th>Total Chap</th>
+                     <th>Year</th>
                      <th>created_at</th>
                      <th>EDIT</th>
                      <th>Delete</th>
                   </tr>
                </thead>
                <tbody>
-                   @foreach ($user as $item)
+                   @foreach ($flim as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->password}}</td>
-                        <td>{{$item->address}}</td>
-                        <td>{{$item->phone}}</td>
+                        <td><img src="{{$item->image}}" width="180px" height="250px" alt=""> </td>
+                        <td>{{ str_replace('-',' ',$item->name)}}</td>
+                        <td>{{$item->description}}</td>
+                        <td>{{$item->category}}</td>
+                        <td>{{$item->total_chap}}</td>
+                        <td>{{$item->year}}</td>
                         <td> {{date("d/m/Y-h:i:s",strtotime($item->created_at))}}</td>
-                        <td><a href="{{Route('admin.user.edit',['id'=>$item->id])}}">EDIT</a></td>
-                        <td><a href="{{Route('admin.user.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this category ?')">DELETE</a></td>
+                        <td><a href="{{Route('admin.flim.edit',['id'=>$item->id])}}">EDIT</a></td>
+                        <td><a href="{{Route('admin.flim.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this Flim ?')">DELETE</a></td>
                     </tr>         
                     @endforeach    
                </tbody>
                <tfoot>
                 <tr>
                     <th>ID</th>
+                     <th>Image</th>
                      <th>Name</th>
-                     <th>EMail</th>
-                     <th>PassWord</th>
-                     <th>Address</th>
-                     <th>Phone</th>
+                     <th>Description</th>
+                     <th>Category</th>
+                     <th>Total Chap</th>
+                     <th>Year</th>
                      <th>created_at</th>
                      <th>EDIT</th>
                      <th>Delete</th>
