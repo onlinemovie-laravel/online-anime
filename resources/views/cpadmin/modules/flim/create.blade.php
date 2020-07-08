@@ -32,7 +32,11 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Image') }}</label>
                             <div class="col-md-10">
+<<<<<<< HEAD
                                 <input type="file" name="image" id="exampleInputFile" accept="image/x-png,image/gif,image/jpeg" required>
+=======
+                                <input type="file" name="image" id="exampleInputFile" accept="image/x-png,image/gif,image/jpeg">
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
                             </div>
                         </div>
                         <div class="form-group row">

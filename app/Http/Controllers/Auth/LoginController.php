@@ -30,7 +30,11 @@ class LoginController extends Controller
     public function redirectTo()
     {
         switch(Auth::user()->lv){     
+<<<<<<< HEAD
             case 9:
+=======
+            case 1:
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
                 $this->redirectTo = '/admin';
                 return $this->redirectTo;
                 break;

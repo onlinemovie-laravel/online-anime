@@ -24,9 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $data = DB::table('flim')->orderBy('created_at','DESC')->get();
 
         return view('index',['collectionlastmovie'=>$data]);  
+=======
+        return view('index');
+        
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
     }
     public function home(){
          return redirect()->route('admin.flim.index');

@@ -65,6 +65,7 @@ class FlimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function show()
     {
         $data = DB::table('flim')->orderBy('updated_at','DESC')->take(5)->get();
@@ -75,6 +76,13 @@ class FlimController extends Controller
     public function more(Request $request){
         dd($request);
     }
+=======
+    public function show($id)
+    {
+       
+    }
+
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,6 +121,15 @@ class FlimController extends Controller
         else{
             $data['image'] = $obj->image;
         }
+<<<<<<< HEAD
+=======
+        
+       //    dd($image->getRealPath());
+        // call service to upload image to imgur.com
+        
+       
+        $data['created_at'] = new DateTime();
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         $data['updated_at'] = new DateTime();
        
          DB::table('flim')->where('id',$id)->update($data); 
@@ -127,7 +144,10 @@ class FlimController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         DB::table('chapter')->where('flim_id',$id)->delete();
+=======
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         DB::table('flim')->where('id',$id)->delete();
 
         return redirect()->route('admin.flim.index');

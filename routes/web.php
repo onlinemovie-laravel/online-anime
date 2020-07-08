@@ -56,9 +56,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('flim')->name('flim.')->group(function () { 
         Route::get('index','FlimController@index')->name('index');
 
+<<<<<<< HEAD
         Route::get('home','FlimController@show')->name('home'); 
         Route::post('more','FlimController@more')->name('more');  
 
+=======
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         Route::get('create','FlimController@create')->name('create'); 
         Route::post('store','FlimController@store')->name('store');  
 
@@ -67,6 +70,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','FlimController@destroy')->name('destroy');
     });
+<<<<<<< HEAD
     Route::prefix('chapter')->name('chapter.')->group(function () { 
         Route::get('index','ChapterController@index')->name('index');
 
@@ -78,6 +82,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','ChapterController@destroy')->name('destroy');
     });
+=======
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
 });
 Route::prefix('page')->name('page.')->group(function () { 
     Route::get('flim/{id}','PageController@inforpage')->name('inforpage');

@@ -33,7 +33,11 @@
                    @foreach ($flim as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
+<<<<<<< HEAD
                         <td><img src="{{$item->image}}" width="180px" height="250px" alt=""> </td>
+=======
+                        <td><img src="{{$item->image}}" width="250px" height="150px" alt=""> </td>
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
                         <td>{{ str_replace('-',' ',$item->name)}}</td>
                         <td>{{$item->description}}</td>
                         <td>{{$item->category}}</td>

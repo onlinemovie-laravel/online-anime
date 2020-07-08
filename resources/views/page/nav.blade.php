@@ -5,11 +5,17 @@
             <li > 
                 <a class="nav-link dropdown-toggle" href="#" id="category" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thể loại</a>
                 <div class="dropdown-menu" aria-labelledby="category">
+<<<<<<< HEAD
                     <div class="row text-center" >
                         @foreach ($listcategory   as $item)
                         <a class="dropdown-item text-danger col-md-2 " href="{{Route('page.pagecate',['name' => $item->name])}}">{{ str_replace('-',' ',$item->name)}}</a>
                         @endforeach
                     </div>
+=======
+                        @foreach ($listcategory   as $item)
+                        <a class="dropdown-item text-danger" href="{{Route('cate')}}">{{ str_replace('-',' ',$item->name)}}</a>
+                        @endforeach
+>>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
                 </div>
                 
             </li>
