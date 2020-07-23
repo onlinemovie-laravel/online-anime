@@ -10,11 +10,21 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.chapter.store') }}" enctype="multipart/form-data">
                         @csrf
-
+                        <div class="form-group-row">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Title') }}</label>
                             <div class="col-md-10">
-                                <input id="name" type="text" class="form-control" name="title" required >
+                                <input id="name" type="text" class="form-control" name="title" value="{{old('title')}}" required >
                             </div>
                         </div>
                         <div class="form-group row">
@@ -30,14 +40,14 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-2 col-form-label text-md-left">{{ __(' Chap index') }}</label>
                             <div class="col-md-10">
-                                <input type="number" name="chap" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <input type="number" name="chap" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="{{old('chap')}}">
                                 <p class="text-muted">Only Number</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Source Video') }}</label>
                             <div class="col-md-10">
-                                <input type="file" name="content" id="exampleInputFile" accept="video/*" required>
+                                <input type="file" name="content" id="exampleInputFile" accept="video/*" required value="{{old('content')}}">
                             </div>
                         </div>
                         <div class="form-group row mb-0">

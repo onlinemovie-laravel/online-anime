@@ -22,7 +22,7 @@ Route::get('infor', function () {
 })->name('fliminfor');
 
 Route::get('cate', function () {
-    return view('flim.category');
+    return view('cpadmin.modules.chap.home');
 })->name('cate');
 
 Route::get('play', function () {
@@ -30,7 +30,7 @@ Route::get('play', function () {
 })->name('play');
 
 /// end test
-Route::prefix('admin')->name('admin.')->group(function () { 
+Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function () { 
     Route::prefix('user')->name('user.')->group(function () { 
         Route::get('index','UserController@index')->name('index');
 
@@ -56,12 +56,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('flim')->name('flim.')->group(function () { 
         Route::get('index','FlimController@index')->name('index');
 
-<<<<<<< HEAD
         Route::get('home','FlimController@show')->name('home'); 
         Route::post('more','FlimController@more')->name('more');  
 
-=======
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         Route::get('create','FlimController@create')->name('create'); 
         Route::post('store','FlimController@store')->name('store');  
 
@@ -70,7 +67,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','FlimController@destroy')->name('destroy');
     });
-<<<<<<< HEAD
     Route::prefix('chapter')->name('chapter.')->group(function () { 
         Route::get('index','ChapterController@index')->name('index');
 
@@ -82,8 +78,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('destroy/{id}','ChapterController@destroy')->name('destroy');
     });
-=======
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
 });
 Route::prefix('page')->name('page.')->group(function () { 
     Route::get('flim/{id}','PageController@inforpage')->name('inforpage');
@@ -97,7 +91,9 @@ Route::prefix('page')->name('page.')->group(function () {
 
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
 });
-
+Route::fallback(function () {
+    return view('404');
+});
 // login-logout
 Auth::routes();
 Auth::routes(['verify' => true]);

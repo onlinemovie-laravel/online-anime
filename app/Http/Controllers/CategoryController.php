@@ -37,7 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data =($request->except('_token'));
+        // $data =($request->except('_token'));
+        // $data['name'] = trim($data['name']);
+        // $data['name'] = str_replace(' ','-',$data['name']);
+        $validatedData = $request->validate([
+            'name' => 'bail|required|unique:category',
+            //'description' => 'bail',
+            ]);
+         $data =($request->except('_token'));
         $data['name'] = trim($data['name']);
         $data['name'] = str_replace(' ','-',$data['name']);
         $data['created_at'] = new DateTime();

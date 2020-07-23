@@ -17,7 +17,11 @@ class ChapterController extends Controller
     public function index()
     {
         $data = DB::table('chapter')->orderBy('id','DESC')->get();
-    
+        foreach( $data as $key => $value ){
+            $flim = DB::table('flim')->where('id',$value->flim_id)->first();          
+            $value->name = $flim->name;
+        }
+       
         return view('cpadmin.modules.chap.index',['chapter'=>$data]);
     }
 
@@ -28,7 +32,7 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        $data = DB::table('flim')->orderBy('created_at','DESC')->get();
+        $data = DB::table('flim')->orderBy('name','ASC')->get();
     
         return view('cpadmin.modules.chap.create',['flim'=>$data]);
     }
@@ -41,6 +45,13 @@ class ChapterController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+        $validatedData = $request->validate([
+            'title' => 'bail|required|string',
+            'chap' => 'bail|required',
+            'flim_id' => 'bail|required',
+            'content' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|required|max:100000',
+            ]);
         $data =($request->except('_token'));
         $flim = DB::table('flim')->select('name')->where('id',$data['flim_id'])->first();
        

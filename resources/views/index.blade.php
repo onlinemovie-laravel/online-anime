@@ -13,7 +13,7 @@
                 <ul class="last-film-box" id="movie-last-movie">
                     @foreach ($collectionlastmovie as $item)
                     <li>
-                        <a class="movie-item m-block" title="{{$item->subname}}" href="/phim/shachou-battle-no-jikan-desu/m7575.html">
+                        <a class="movie-item m-block" title="{{$item->subname}}" href="{{Route('page.inforpage',['id' => $item->id])}}">
                             <div class="block-wrapper">
                                 <div class="movie-thumbnail ratio-box ratio-3_4">
                                     <div class="public-film-item-thumb ratio-content" style="background-image:url('{{$item->image}}')"></div>

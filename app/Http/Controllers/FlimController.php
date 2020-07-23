@@ -39,6 +39,26 @@ class FlimController extends Controller
      */
     public function store(Request $request)
     {
+        // $imageName = time().'.'.$data['image']->getClientOriginalExtension();
+        // $data['image']->move(public_path('img'), $imageName);
+        // $videoName = time().'.'.$data['video']->getClientOriginalExtension();
+        // $data['video']->move(public_path('video'), $videoName);
+  
+        //     var_dump($imageName);
+        //     dd($videoName);
+        // return back()
+
+        //     ->with('success','You have successfully upload image.')
+
+        //     ->with('image',$imageName);
+        // $image = $data['image'];
+        $validatedData = $request->validate([
+        'name' => 'bail|required|alpha|max:250',
+        'subname' => 'bail',
+        'description' => 'bail|required|min:8',
+        'category' => 'bail|required',
+        'image' => 'mimes:jpeg,jpg,png,gif|required|max:100000',
+        ]);
         $data =($request->except('_token'));
         $sub = "";
         $test = unserialize(serialize($request['category']));
@@ -65,24 +85,14 @@ class FlimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function show()
     {
-        $data = DB::table('flim')->orderBy('updated_at','DESC')->take(5)->get();
+        $data = DB::table('flim')->orderBy('updated_at','DESC')->get();
     
         return view('index',['collectionlastmovie'=>$data]);
     }
 
-    public function more(Request $request){
-        dd($request);
-    }
-=======
-    public function show($id)
-    {
-       
-    }
-
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -121,15 +131,6 @@ class FlimController extends Controller
         else{
             $data['image'] = $obj->image;
         }
-<<<<<<< HEAD
-=======
-        
-       //    dd($image->getRealPath());
-        // call service to upload image to imgur.com
-        
-       
-        $data['created_at'] = new DateTime();
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         $data['updated_at'] = new DateTime();
        
          DB::table('flim')->where('id',$id)->update($data); 
@@ -144,10 +145,7 @@ class FlimController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
         DB::table('chapter')->where('flim_id',$id)->delete();
-=======
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
         DB::table('flim')->where('id',$id)->delete();
 
         return redirect()->route('admin.flim.index');

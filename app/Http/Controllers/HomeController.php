@@ -24,16 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $data = DB::table('flim')->orderBy('created_at','DESC')->get();
+        $data = DB::table('flim')->orderBy('updated_at','DESC')->get();
 
         return view('index',['collectionlastmovie'=>$data]);  
-=======
-        return view('index');
-        
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
     }
     public function home(){
-         return redirect()->route('admin.flim.index');
+        $data = DB::table('flim')->orderBy('created_at','DESC')->take(5)->get();
+        $count['flim'] = DB::table('flim')->count();
+        $count['chapter'] = DB::table('chapter')->count();
+        $count['uers'] = DB::table('users')->where('lv','<',9)->count();
+        $count['cmt'] = DB::table('comment')->count();
+        $count['date'] = date("d/m/Y");
+        $count['time'] =  date("h:i:sa");
+        // dd($count);
+        return view('cpadmin.modules.Dashboard',['flim'=>$data,'count'=>$count]);
     }
 }

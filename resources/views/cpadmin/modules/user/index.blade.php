@@ -7,10 +7,9 @@
         <div class="card-header">
             <h3 class="card-title">Danh sách</h3>
             <div class="card-tools">
+                <a href="{{Route('admin.user.register')}}" class="btn btn-primary"  title="Create new Category">ADD MORE</a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fas fa-times"></i></button>
             </div>
         </div>
         <div class="card-body">

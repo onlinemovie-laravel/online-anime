@@ -26,7 +26,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-2 col-form-label text-md-left">{{ __('Description') }}</label>
                             <div class="col-md-10">
-                                <textarea class="form-control" rows="3" placeholder="{{$flim->description}}" name="description"></textarea>
+                                <textarea class="form-control" rows="3" placeholder="{{$flim->description}}" name="description">{{$flim->description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -72,8 +72,8 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-2 col-form-label text-md-left">{{ __('Year') }}</label>
                             <div class="col-md-10">
-                                <input type="number" name="year" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="{{$flim->year}}" min="2015" max="2040" >
-                                <p class="text-muted">Only Number from 2015 to 2040</p>
+                                <input type="number" name="year" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value="{{$flim->year}}" min="2000" max="2040" >
+                                <p class="text-muted">Only Number from 2000 to 2040</p>
                             </div>
                         </div>
                         <div class="form-group row mb-0">

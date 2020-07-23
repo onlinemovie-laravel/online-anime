@@ -1,0 +1,20 @@
+img
+{
+	max-width: 100%;
+}
+.clear
+{
+	clear: both;
+	line-height: 0px;
+	overflow: hidden;
+	display: block;
+	height: 0px;
+	max-height: 0px;
+}
+.sidebar{
+    padding-left: 35px;
+}
+
+body{
+	background-repeat: no-repeat;
+}

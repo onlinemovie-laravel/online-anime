@@ -18,8 +18,8 @@ class Admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        if (Auth::user()->lv == 1) {
-            return redirect()->route('admin');
+        if (Auth::user()->lv != 9) {
+            return redirect()->route('index');
         }
     }
 }

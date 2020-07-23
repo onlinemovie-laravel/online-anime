@@ -7,10 +7,9 @@
         <div class="card-header">
             <h3 class="card-title">Danh sách</h3>
             <div class="card-tools">
+                <a href="{{Route('admin.flim.create')}}" class="btn btn-primary"  title="Create new Category">ADD MORE</a>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fas fa-times"></i></button>
             </div>
         </div>
         <div class="card-body">
@@ -33,11 +32,7 @@
                    @foreach ($flim as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-<<<<<<< HEAD
                         <td><img src="{{$item->image}}" width="180px" height="250px" alt=""> </td>
-=======
-                        <td><img src="{{$item->image}}" width="250px" height="150px" alt=""> </td>
->>>>>>> 96434f47a37b40b9759c32bacd079834da6c24bd
                         <td>{{ str_replace('-',' ',$item->name)}}</td>
                         <td>{{$item->description}}</td>
                         <td>{{$item->category}}</td>

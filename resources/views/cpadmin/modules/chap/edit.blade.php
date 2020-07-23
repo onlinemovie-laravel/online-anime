@@ -42,7 +42,28 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Old VIdeo ') }}</label>
                             <div class="col-md-10 ">
-                                <script src="https://cdn.jwplayer.com/players/{{$chapter->content}}-eFvNO8QX.js"></script>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item active" role="presentation">
+                                      <a class="nav-link active text-warning" id="home{{$chapter->id}}-tab" data-toggle="tab" href="#this{{$chapter->id}}" role="tab" aria-controls="this{{$item->id}}" aria-selected="true">Sever1</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                      <a class="nav-link text-warning" id="profile{{$chapter->id}}-tab" data-toggle="tab" href="#that{{$chapter->id}}" role="tab" aria-controls="this{{$item->id}}" aria-selected="false">sever2</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ">
+                                    <div class="tab-pane active" id="this{{$chapter->id}}" role="tabpanel" aria-labelledby="day-tab">
+                                        <script src="https://cdn.jwplayer.com/players/{{$chapter->content}}-eFvNO8QX.js"></script>
+                                    </div>
+                                    <div class="tab-pane " id="that{{$item->id}}" role="tabpanel" aria-labelledby="week-tab">
+                                        <div itemscope itemtype="https://schema.org/VideoObject" title="This video can take to 10min for Processing">
+                                            <meta itemprop="thumbnailUrl" content="https://content.jwplatform.com/thumbs/{{$chapter->content}}-1280.jpg"/>
+                                            <meta itemprop="contentUrl" content="https://content.jwplatform.com/videos/{{$chapter->content}}-ZUxenC5W.mp4"/>
+                                            <div class="embed-responsive embed-responsive-16by9"  > 
+                                                <iframe src="https://cdn.jwplayer.com/players/{{$chapter->content}}-eFvNO8QX.html"  frameborder="0" scrolling="auto"  style="position:absolute;" allowfullscreen title="This video can take to 10min for Processing"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
