@@ -5,80 +5,27 @@
         </div>
     </div>
 </div>
-<!-- /Fullbanner -->
-<!-- Main content -->
-<!-- /random suggest -->
 <div class="row nominated-movie">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="list_carousel">
                 <ul id="movie-carousel-top">
-                    <li>
-                        <a class="movie-item m-block" title="Chihayafuru SS2 - Chihayafuru SS2" href="/phim/chihayafuru-ss2/m2900.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/5hI4qvv.jpg')"></div>
+                    @for ($i = 0; $i < 5; $i++)
+                        <li>
+                            <a class="movie-item m-block" title="{{$rdflim[$i]->subname}}" href="{{Route('page.inforpage',['id' => $rdflim[$i]->id])}}">
+                                <div class="block-wrapper">
+                                    <div class="movie-thumbnail ratio-box ratio-3_4">
+                                        <div class="public-film-item-thumb ratio-content" style="background-image:url('{{$rdflim[$i]->image}}')"></div>
+                                    </div>
+                                    <div class="movie-meta">
+                                        <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
+                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
+                                    </div>
                                 </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1">Chihayafuru SS2</div>
-                                    <span class="movie-title-2">Chihayafuru SS2</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/25</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Twin Love Alternative - Futakoi Alternative" href="/phim/futakoi-alternative/m2056.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/P4MBczt.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Twin Love ...</div>
-                                    <span class="movie-title-2">Futakoi Alternative</span><span class="movie-title-chap">201950 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Ikoku Meiro No Croisee - Ikoku Meiro No Croisee" href="/phim/ikoku-meiro-no-croisee/m1615.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/JE9dt3v.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Ikoku Meiro ...</div>
-                                    <span class="movie-title-2">Ikoku Meiro No Croisee</span><span class="movie-title-chap">184162 </span><span class="ribbon">12/12</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Senkou no Night Raid - Senkou no Night Raid" href="/phim/senkou-no-night-raid/m4282.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://farm4.staticflickr.com/3895/14812387221_4e44166b3e_o.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Senkou no ...</div>
-                                    <span class="movie-title-2">Senkou no Night Raid</span><span class="movie-title-chap">159227 </span><span class="ribbon">16/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Classroom☆Crisis (2015) - Classroom Crisis" href="/phim/classroom-crisis/m5080.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/LA4hR0h.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1">Classroom☆Crisis (2015)</div>
-                                    <span class="movie-title-2">Classroom Crisis</span><span class="movie-title-chap">262919 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    @endfor
                 </ul>
                 <div class="clear"></div>
                
@@ -87,71 +34,21 @@
           <div class="carousel-item">
             <div class="list_carousel">
                 <ul id="movie-carousel-top">
-                    <li>
-                        <a class="movie-item m-block" title="Chihayafuru SS2 - Chihayafuru SS2" href="/phim/chihayafuru-ss2/m2900.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/5hI4qvv.jpg')"></div>
+                    @for ($i = 5; $i < 10; $i++)
+                        <li>
+                            <a class="movie-item m-block" title="{{$rdflim[$i]->subname}}" href="{{Route('page.inforpage',['id' => $rdflim[$i]->id])}}">
+                                <div class="block-wrapper">
+                                    <div class="movie-thumbnail ratio-box ratio-3_4">
+                                        <div class="public-film-item-thumb ratio-content" style="background-image:url('{{$rdflim[$i]->image}}')"></div>
+                                    </div>
+                                    <div class="movie-meta">
+                                        <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
+                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
+                                    </div>
                                 </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1">Chihayafuru SS2</div>
-                                    <span class="movie-title-2">Chihayafuru SS2</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/25</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Twin Love Alternative - Futakoi Alternative" href="/phim/futakoi-alternative/m2056.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/P4MBczt.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Twin Love ...</div>
-                                    <span class="movie-title-2">Futakoi Alternative</span><span class="movie-title-chap">201950 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Ikoku Meiro No Croisee - Ikoku Meiro No Croisee" href="/phim/ikoku-meiro-no-croisee/m1615.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/JE9dt3v.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Ikoku Meiro ...</div>
-                                    <span class="movie-title-2">Ikoku Meiro No Croisee</span><span class="movie-title-chap">184162 </span><span class="ribbon">12/12</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Senkou no Night Raid - Senkou no Night Raid" href="/phim/senkou-no-night-raid/m4282.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://farm4.staticflickr.com/3895/14812387221_4e44166b3e_o.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Senkou no ...</div>
-                                    <span class="movie-title-2">Senkou no Night Raid</span><span class="movie-title-chap">159227 </span><span class="ribbon">16/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Classroom☆Crisis (2015) - Classroom Crisis" href="/phim/classroom-crisis/m5080.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/LA4hR0h.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1">Classroom☆Crisis (2015)</div>
-                                    <span class="movie-title-2">Classroom Crisis</span><span class="movie-title-chap">262919 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    @endfor
                 </ul>
                 <div class="clear"></div>
                 
@@ -160,71 +57,21 @@
           <div class="carousel-item">
             <div class="list_carousel">
                 <ul id="movie-carousel-top">
+                    @for ($i = 0; $i < 5; $i++)
                     <li>
-                        <a class="movie-item m-block" title="Chihayafuru SS2 - Chihayafuru SS2" href="/phim/chihayafuru-ss2/m2900.html">
+                        <a class="movie-item m-block" title="{{$rdflim[$i]->subname}}" href="{{Route('page.inforpage',['id' => $rdflim[$i]->id])}}">
                             <div class="block-wrapper">
                                 <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/5hI4qvv.jpg')"></div>
+                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('{{$rdflim[$i]->image}}')"></div>
                                 </div>
                                 <div class="movie-meta">
-                                    <div class="movie-title-1">Chihayafuru SS2</div>
-                                    <span class="movie-title-2">Chihayafuru SS2</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/25</span>
+                                    <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
+                                    <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <a class="movie-item m-block" title="Twin Love Alternative - Futakoi Alternative" href="/phim/futakoi-alternative/m2056.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/P4MBczt.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Twin Love ...</div>
-                                    <span class="movie-title-2">Futakoi Alternative</span><span class="movie-title-chap">201950 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Ikoku Meiro No Croisee - Ikoku Meiro No Croisee" href="/phim/ikoku-meiro-no-croisee/m1615.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/JE9dt3v.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Ikoku Meiro ...</div>
-                                    <span class="movie-title-2">Ikoku Meiro No Croisee</span><span class="movie-title-chap">184162 </span><span class="ribbon">12/12</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Senkou no Night Raid - Senkou no Night Raid" href="/phim/senkou-no-night-raid/m4282.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://farm4.staticflickr.com/3895/14812387221_4e44166b3e_o.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1"> Senkou no ...</div>
-                                    <span class="movie-title-2">Senkou no Night Raid</span><span class="movie-title-chap">159227 </span><span class="ribbon">16/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="movie-item m-block" title="Classroom☆Crisis (2015) - Classroom Crisis" href="/phim/classroom-crisis/m5080.html">
-                            <div class="block-wrapper">
-                                <div class="movie-thumbnail ratio-box ratio-3_4">
-                                    <div class="public-film-item-thumb ratio-content" style="background-image:url('https://img.anime47.com/imgur/LA4hR0h.jpg')"></div>
-                                </div>
-                                <div class="movie-meta">
-                                    <div class="movie-title-1">Classroom☆Crisis (2015)</div>
-                                    <span class="movie-title-2">Classroom Crisis</span><span class="movie-title-chap">262919 </span><span class="ribbon">13/13</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                @endfor
                 </ul>
                 <div class="clear"></div>
                

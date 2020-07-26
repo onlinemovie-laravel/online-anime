@@ -22,7 +22,7 @@
 </head>
 <body style="background-image: url('{{ asset('img/bg.jpg')}}');">
     <div id="app"    >
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="font-size: 20px">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

@@ -12,24 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// test giao dien
 Route::get('/','FlimController@show')->name('index');
 
-
-
-Route::get('infor', function () {
-    return view('flim.infor');
-})->name('fliminfor');
-
-Route::get('cate', function () {
-    return view('cpadmin.modules.chap.home');
-})->name('cate');
-
-Route::get('play', function () {
-    return view('flim.player');
-})->name('play');
-
-/// end test
 Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function () { 
     Route::prefix('user')->name('user.')->group(function () { 
         Route::get('index','UserController@index')->name('index');
@@ -51,7 +35,7 @@ Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function
         Route::get('edit/{id}','CategoryController@edit')->name('edit');
         Route::post('update/{id}','CategoryController@update')->name('update'); 
 
-        Route::get('destroy/{id}','Categorycontroller@destroy')->name('destroy');
+        Route::get('destroy/{id}','CategoryController@destroy')->name('destroy');
     });
     Route::prefix('flim')->name('flim.')->group(function () { 
         Route::get('index','FlimController@index')->name('index');
@@ -81,15 +65,16 @@ Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function
 });
 Route::prefix('page')->name('page.')->group(function () { 
     Route::get('flim/{id}','PageController@inforpage')->name('inforpage');
-
+    Route::get('all','PageController@show')->name('show');
     Route::get('category/{name}','PageController@pagecate')->name('pagecate'); 
     Route::get('year/{year}','PageController@yearpage')->name('yearpage');
-    Route::post('store','PageController@store')->name('store');  
+    Route::get('status/{status}','PageController@statuspage')->name('statuspage'); 
 
-    Route::get('edit/{id}','PageController@edit')->name('edit');
+    Route::get('video/{id}','PageController@videopage')->name('videopage');
     Route::post('update/{id}','PageController@update')->name('update'); 
 
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
+
 });
 Route::fallback(function () {
     return view('404');
@@ -99,4 +84,4 @@ Auth::routes();
 Auth::routes(['verify' => true]);
  
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@home')->name('admin');
+Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');

@@ -33,25 +33,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/flim/index" class="nav-link">
+                            <a href="{{ route('admin.flim.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Flim </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/chapter/index" class="nav-link">
+                            <a href="{{ route('admin.chapter.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Chapter </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/category/index" class="nav-link">
+                            <a href="{{ route('admin.category.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/user/index" class="nav-link">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User</p>
                             </a>
@@ -60,28 +60,28 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/admin/flim/create" class="nav-link">
+                    <a href="{{ route('admin.flim.create') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                           ADD FLIM
                         </p>
                     </a>
                 </li><li class="nav-item">
-                    <a href="/admin/chapter/create" class="nav-link">
+                    <a href="{{ route('admin.chapter.create') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             ADD Chapter
                         </p>
                     </a>
                 </li><li class="nav-item">
-                    <a href="/admin/category/create" class="nav-link">
+                    <a href="{{ route('admin.category.create') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             ADD Category
                         </p>
                     </a>
                 </li><li class="nav-item">
-                    <a href="/admin/user/register" class="nav-link">
+                    <a href="{{ route('admin.user.register') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             ADD User

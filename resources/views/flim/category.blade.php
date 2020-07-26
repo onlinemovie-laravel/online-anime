@@ -6,6 +6,9 @@
     </h1>
     <!-- phia tren + phia duoi ben trai -->
     <ul class="last-film-box" id="movie-last-movie">
+        @if ($listflim->count() == 0)
+            <h1 class="text-center text-danger">Không tìm Thấy Phim Phù Hợp</h1>
+        @else
         @foreach ($listflim as $item)
         <li>
             <a class="movie-item m-block" title="{{$item->subname}}" href="{{Route('page.inforpage',['id' => $item->id])}}">
@@ -22,6 +25,8 @@
         </li>
         @endforeach
  
+        @endif
+       
     </ul>
     {{-- <div class="clear"></div>
     <ul class="pagination pagination-lg">

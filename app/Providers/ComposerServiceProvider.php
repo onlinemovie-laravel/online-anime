@@ -23,7 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['page.nav','cpadmin.modules.flim.create','cpadmin.modules.flim.edit'],'App\Http\ViewComposers\MovieComposer');
+        view()->composer(['page.nav','page.slider','page.siderbar','cpadmin.modules.flim.create','cpadmin.modules.flim.edit'],'App\Http\ViewComposers\MovieComposer');
         
     }
 }

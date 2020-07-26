@@ -2,7 +2,7 @@
     <div class="header">
         <div class="container">
             <!-- header logo -->
-            <div class="header-logo"><a class="logo" href="/" title="ANIME VIETSUB ONLINE HD"><span>ANIME47.COM</span></a></div>
+            <div class="header-logo" ><a class="" href="/" title="ANIME VIETSUB ONLINE HD" ><img  class=" logotop" src="{{asset('img/123.png')}}"></a></div>
             <div class="widget_search">
                 <form method="GET" id="form-search" action="tim-kiem/">
                     <div><input type="text" name="keyword" placeholder="Tìm: tên anime ... " value="" onkeyup="onSearch(this.value)" id="searchkeyword" autocomplete="off"><input style="display: none;" id="searchsubmit" class="" value=" " type="submit"></div>

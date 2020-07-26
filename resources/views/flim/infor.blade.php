@@ -13,7 +13,7 @@
                                 <h2 class="hidden mt-2"></h2>
                                 <ul class="btn btn-block">
                                     <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" href="javascript:void(0)" onclick="return favo(1,7551)" title="Đánh Dấu"> Thêm Vào Hộp</a></li>
-                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{Route('play')}}">Xem Anime</a></li>
+                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{route('page.videopage',$flim->id)}}">Xem Anime</a></li>
                                 </ul>
                             </div>
                             <!-- Bookmark-->
@@ -64,17 +64,8 @@
                                             <div class="name"><img style="margin-top: -7px;" src="style/cabfs1.png"> <span>CabFansub</span>  </div>
                                             <div class="episodes col-lg-12 col-md-12 col-sm-12">
                                                 <ul>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-08/167522.html" title="08">08</a></li>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-07/167442.html" title="07">07</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="name"><img style="margin-top: -7px;" src="style/kanefusa.png"> <span>Kanefusa</span>  </div>
-                                            <div class="episodes col-lg-12 col-md-12 col-sm-12">
-                                                <ul>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-10/167613.html" title="10">10</a></li>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-09/167612.html" title="09">09</a></li>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-08/167473.html" title="08">08</a></li>
-                                                    <li><a href="/xem-phim-fruits-basket-2nd-season-ep-07/167388.html" title="07">07</a></li>
+                                                    <li><a href="#" title="08">08</a></li>
+                                                    <li><a href="#" title="07">07</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -90,11 +81,11 @@
                     <div class="content" id="film-content" itemscope="" itemtype="http://schema.org/Review" itemprop="review">
                         <div class="news-article">
                             <p></p>
-                            <p>{{$flim->description}}</p>
+                            {{$flim->description}}
                             <p></p>
                         </div>
-                        <p>Chúc các bạn <a href="https://anime47.com/" title="ANIME VIETSUB ONLINE | ANIME MÙA | ANIME HAY | ANIME TOP | XEM ANIME ONLINE | ANIME47.COM">xem anime vietsub</a> vui vẻ tại ANIME47.COM</p>
-                        <span itemprop="author" class="hidden">@anime47.com</span>  
+                        <p>Chúc các bạn <a href="/" title="ANIME VIETSUB ONLINE | ANIME MÙA | ANIME HAY | ANIME TOP | XEM ANIME ONLINE ">xem anime vietsub</a> vui vẻ tại ANIMESQL.COM</p>
+                        <span itemprop="author" class="hidden">@animeSQL.com</span>  
                         <!-- <p><div class="fb-comments" data-href="http://anime47.com/phim/fruits-basket-2nd-season/m7551.html" data-num-posts="7" data-width="100%" data-colorscheme="dark" data-order-by="reverse_time"></div></p> -->
                         <div class="thaoluanchovui">
                             <p></p>

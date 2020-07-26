@@ -50,7 +50,7 @@
                             </ul>
                             <div class="tab-content ">
                                 <div class="tab-pane active" id="this{{$item->id}}" role="tabpanel" aria-labelledby="day-tab">
-                                    <script src="https://cdn.jwplayer.com/players/{{$item->content}}-eFvNO8QX.js"></script>
+                                    <script src="https://cdn.jwplayer.com/players/{{$item->content}}-YK2Wxq8L.js"></script>
                                 </div>
                                 <div class="tab-pane " id="that{{$item->id}}" role="tabpanel" aria-labelledby="week-tab">
                                     <div itemscope itemtype="https://schema.org/VideoObject" title="This video can take to 10min for Processing">

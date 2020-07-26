@@ -8,6 +8,10 @@
  {
      public $movieList ;
      public $year;
+     public $randomflim;
+     public $topcmt;
+     public $toptotalviews;
+     public $topchapviews;
      /**
       * Create a movie composer.
       *
@@ -18,6 +22,7 @@
         
          $this->movieList =  DB::table('category')->orderBy('id','DESC')->get();
          $this->year = DB::table('flim')->select('year')->orderBy('year','DESC')->distinct()->get();
+         $this->randomflim = DB::table('flim')->inRandomOrder()->limit(10)->get();
      }
 
      /**
@@ -30,6 +35,6 @@
      {
         $view->with('listcategory', end($this->movieList));
         $view->with('listyear', end($this->year));
-     //   $view->with(['listcategory'=>$this->movieList]);
+        $view->with(['rdflim'=>$this->randomflim]);
      }
  }

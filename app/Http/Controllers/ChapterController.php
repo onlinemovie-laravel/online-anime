@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Jwplayer;
 class ChapterController extends Controller
 {
-    private static $client = '7O8Qgq2m';
-    private static $serect = 'uT2IyjXQsc9C3ezF2noBgNEc';
+    // private static $client = '7O8Qgq2m';
+    // private static $serect = 'uT2IyjXQsc9C3ezF2noBgNEc';
+    private static $client = 'aA15GhCV';
+    private static $serect = 'XkJWRJeXAwMJwMk0kZl8EMuL';
     /**
      * Display a listing of the resource.
      *

@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin';
     public const PAGE = '/';
 
     /**
@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        
+        Route::pattern('id', '[0-9]+');
         parent::boot();
     }
 

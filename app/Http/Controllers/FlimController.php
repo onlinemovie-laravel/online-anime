@@ -53,7 +53,7 @@ class FlimController extends Controller
         //     ->with('image',$imageName);
         // $image = $data['image'];
         $validatedData = $request->validate([
-        'name' => 'bail|required|alpha|max:250',
+        'name' => 'bail|required|max:250',
         'subname' => 'bail',
         'description' => 'bail|required|min:8',
         'category' => 'bail|required',
@@ -85,11 +85,12 @@ class FlimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //this funcition show in flie index karmen rider botpage
     public function show()
     {
-        $data = DB::table('flim')->orderBy('updated_at','DESC')->get();
-    
-        return view('index',['collectionlastmovie'=>$data]);
+        $data = DB::table('flim')->orderBy('updated_at','DESC')->get()->take(28);
+        $kamenmovie = DB::table('flim')->where('category', 'like', '%Kamen-Rider%')->get()->take(8);
+        return view('index',['collectionlastmovie'=>$data,'kamenrider'=>$kamenmovie]);
     }
 
     
