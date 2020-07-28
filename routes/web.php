@@ -76,6 +76,14 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
 
 });
+Route::prefix('boxflim')->name('boxflim.')->group(function () { 
+    
+    Route::get('index/{id}','BoxflimController@show')->name('index');
+    Route::get('delete/{id}','BoxflimController@destroy')->name('delete'); 
+
+
+
+});
 Route::fallback(function () {
     return view('404');
 });
