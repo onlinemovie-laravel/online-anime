@@ -34,9 +34,16 @@ class BoxflimController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id,$user_id)
     {
-        //
+        $data['flim_id'] = $id;
+        $data['user_id'] = $user_id;
+        $data['created_at'] = new DateTime();
+        $data['updated_at'] = new DateTime();
+        DB::table('boxflim')->insert($data);
+        $data = DB::table('flim')->where('id',$id)->first();      
+        return view('flim.infor',['flim'=>$data]);
+
     }
 
     /**
@@ -91,5 +98,7 @@ class BoxflimController extends Controller
         //dd($data);
         return view('boxflim.index',['boxflim'=>$data]);
     }
+
+    
     
 }

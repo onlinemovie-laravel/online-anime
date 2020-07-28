@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoxflimController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,7 +80,8 @@ Route::prefix('page')->name('page.')->group(function () {
 Route::prefix('boxflim')->name('boxflim.')->group(function () { 
     
     Route::get('index/{id}','BoxflimController@show')->name('index');
-    Route::get('delete/{id}','BoxflimController@destroy')->name('delete'); 
+    Route::get('delete/{id}','BoxflimController@destroy')->name('delete');
+    Route::get('add/{id}/{user_id}', 'BoxflimController@store')->name('add');
 
 
 

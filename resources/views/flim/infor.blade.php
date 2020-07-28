@@ -12,7 +12,7 @@
                                 <img itemprop="image" alt="{{$flim->name}}" src="{{$flim->image}}" style="width:100%;height:100%;">
                                 <h2 class="hidden mt-2"></h2>
                                 <ul class="btn btn-block">
-                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" href="javascript:void(0)" onclick="return favo(1,7551)" title="Đánh Dấu"> Thêm Vào Hộp</a></li>
+                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" href="{{Route('boxflim.add',['id' => $flim->id,'user_id' => Auth::user()->id])}}" onclick="return favo(1,7551)" title="Đánh Dấu"> Thêm  Vào Hộp</a></li>
                                     <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{route('page.videopage',$flim->id)}}">Xem Anime</a></li>
                                 </ul>
                             </div>
