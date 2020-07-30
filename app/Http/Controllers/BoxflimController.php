@@ -34,16 +34,16 @@ class BoxflimController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id,$user_id)
+    public function store(Request $request)
     {
-        $data['flim_id'] = $id;
-        $data['user_id'] = $user_id;
+        $data =($request->except('_token'));
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
+        //dd($data);
         DB::table('boxflim')->insert($data);
-        $data = DB::table('flim')->where('id',$id)->first();      
-        return view('flim.infor',['flim'=>$data]);
-
+        //$data = DB::table('flim')->where('id',$data->id)->first();      
+        //return view('flim.infor',['flim'=>$data]);
+        return redirect()->back() ->with('alert', 'Bạn thêm phim vào tủ thành công!');
     }
 
     /**
@@ -96,7 +96,8 @@ class BoxflimController extends Controller
         
         $data = DB::table('flim')->join('boxflim', 'flim.id', '=', 'boxflim.flim_id')->select('flim.*', 'boxflim.id', 'boxflim.flim_id', 'boxflim.user_id')->where('boxflim.user_id',$user_id)->orderBy('flim.updated_at','DESC')->get();   
         //dd($data);
-        return view('boxflim.index',['boxflim'=>$data]);
+        //return view('boxflim.index',['boxflim'=>$data]);
+        return redirect()->route('user.boxindex',['id'=>$user_id]);
     }
 
     

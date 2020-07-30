@@ -77,11 +77,11 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
 
 });
-Route::prefix('boxflim')->name('boxflim.')->group(function () { 
+Route::prefix('user')->name('user.')->group(function () { 
     
-    Route::get('index/{id}','BoxflimController@show')->name('index');
-    Route::get('delete/{id}','BoxflimController@destroy')->name('delete');
-    Route::get('add/{id}/{user_id}', 'BoxflimController@store')->name('add');
+    Route::get('index/{id}','BoxflimController@show')->name('boxindex');
+    Route::post('delete/{id}','BoxflimController@destroy')->name('boxdelete');
+    Route::post('add', 'BoxflimController@store')->name('boxadd');
 
 
 
