@@ -66,7 +66,7 @@ class BoxflimController extends Controller
     {
         $data = DB::table('flim')->join('boxflim', 'flim.id', '=', 'boxflim.flim_id')->select('flim.*', 'boxflim.id', 'boxflim.flim_id', 'boxflim.user_id')->where('boxflim.user_id',$id)->orderBy('flim.updated_at','DESC')->get();   
         //dd($data);
-        return view('boxflim.index',['boxflim'=>$data]);
+        return view('flim.index',['boxflim'=>$data]);
     }
 
     /**
