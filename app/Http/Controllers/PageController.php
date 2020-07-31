@@ -16,8 +16,14 @@ class PageController extends Controller
     public function inforpage($id)
     {
         $data = DB::table('flim')->where('id',$id)->first();
+        $chap = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->get()->take(5);
+        if (isset($data)) {
+            return view('flim.infor',['flim'=>$data,'chap'=>$chap]);
+        } else {
+            return view('404');
+        }
         
-        return view('flim.infor',['flim'=>$data]);
+        
     }
 
     public function show()
@@ -63,8 +69,19 @@ class PageController extends Controller
         
         
     }
-    
-
+    public function videobychap($id){
+        $data = DB::table('chapter')->where('id',$id)->orderBy('updated_at','DESC')->first();
+        $title = DB::table('flim')->where('id',$data->flim_id)->first();
+        if (isset($data)) {
+            return view('flim.player',['item'=>$data,'title'=>$title]);
+        } else {
+            $data = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->first();
+            $title = DB::table('flim')->where('id',9)->first();
+            return view('flim.player',['item'=>$data,'title'=>$title]);
+        }
+        
+        
+    }
     
 
 }
