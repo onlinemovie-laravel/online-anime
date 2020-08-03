@@ -82,8 +82,6 @@ Route::middleware('checklogin')->prefix('user')->name('user.')->group(function (
     Route::get('delete/{id}','BoxflimController@destroy')->name('boxdelete');
     Route::post('add', 'BoxflimController@store')->name('boxadd');
     Route::get('add', 'BoxflimController@store')->name('boxadd');
-
-
 });
 Route::fallback(function () {
     return view('404');
@@ -94,3 +92,6 @@ Auth::routes(['verify' => true]);
  
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');
+// Route::get('mail', function () {
+//     return view('mail');
+// });
