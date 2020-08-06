@@ -78,7 +78,6 @@ class FlimController extends Controller
          DB::table('flim')->insert($data); 
          return redirect()->route('admin.flim.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -105,6 +104,7 @@ class FlimController extends Controller
         $flim = DB::table('flim')->where('id',$id)->first();
         return view('cpadmin.modules.flim.edit',['flim'=>$flim]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -114,7 +114,8 @@ class FlimController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $obj = DB::table('flim')->select('image')->where('id',$id)->first();        
+        $obj = DB::table('flim')->select('image')->where('id',$id)->first();
+        
         $data =($request->except('_token'));
         $sub = "";
         $test = unserialize(serialize($request['category']));
@@ -130,7 +131,8 @@ class FlimController extends Controller
         else{
             $data['image'] = $obj->image;
         }
-        $data['updated_at'] = new DateTime();       
+        $data['updated_at'] = new DateTime();
+       
          DB::table('flim')->where('id',$id)->update($data); 
          return redirect()->route('admin.flim.index');
     }
@@ -145,6 +147,7 @@ class FlimController extends Controller
     {
         DB::table('chapter')->where('flim_id',$id)->delete();
         DB::table('flim')->where('id',$id)->delete();
+
         return redirect()->route('admin.flim.index');
     }
 }

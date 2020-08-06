@@ -80,8 +80,8 @@ class ChapterController extends Controller
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
        // dd($data);
-       DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
-       DB::table('chapter')->insert($data); 
+        DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
+        DB::table('chapter')->insert($data); 
         $usersubrice = DB::table('users')->join('boxflim', 'users.id', '=', 'boxflim.user_id')->where('boxflim.flim_id',$data['flim_id'])->get(); 
         $link =  env("APP_URL").":8000/page/flim/".$data['flim_id'];
         $emails = array();

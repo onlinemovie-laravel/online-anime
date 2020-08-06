@@ -39,21 +39,11 @@ class BoxflimController extends Controller
         $data =($request->except('_token'));
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
-        $getflim = $data['flim_id'];
-        $getuser = $data['user_id'];
         //dd($data);
-        $getbox = DB::table('boxflim')->where([['flim_id', $getflim], ['user_id', $getuser],])->get();
-        
-        if(count($getbox) == 0){
-            //dd($data);
-            DB::table('boxflim')->insert($data);
-            return redirect()->back() ->with('alert', 'Bạn thêm phim vào tủ thành công!');
-        }
-        else{
-            return redirect()->back() ->with('alert', 'Bạn đã thêm phim vào tủ!');
-        }
-        
-        
+        DB::table('boxflim')->insert($data);
+        //$data = DB::table('flim')->where('id',$data->id)->first();      
+        //return view('flim.infor',['flim'=>$data]);
+        return redirect()->back() ->with('alert', 'Bạn thêm phim vào tủ thành công!');
     }
 
     /**

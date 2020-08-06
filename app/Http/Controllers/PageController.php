@@ -82,6 +82,54 @@ class PageController extends Controller
         
         
     }
+    public function sort(Request $request)
+    {
+        $status = [];
+        $year = [];
+        $cate = [];
+        $sort ;
+        $data =($request->except('_token'));
+        if (count($data)==0) {
+            return redirect()->route('page.show')   ;
+        } else {
+            // dd($data["status"]);
+            if (isset($data["status"])) {
+                array_push($status,['status', $data["status"]]);
+            } else {
+                array_push($status,['status', '<>', 'null']);
+
+            }
+            if (isset($data["year"])) {
+                array_push($year,['year', $data["year"]]);
+            } else {
+                array_push($year,['year', '<>', 'null']);
+            }
+            if (isset($data["sort"])) {
+                $sort = $data["sort"];
+            } else {
+                $sort = 'updated_at';
+            }
+            if (isset($data["category"])) {
+                $categorylist = ($request['category']);
+                foreach ($categorylist as $key => $value) {
+                    array_push($cate,['category', 'like', '%'.$value.'%']);
+                }
+            } else {
+                array_push($cate,['category', '<>', 'null']);
+            }
+            
+           $dulieu = DB::table('flim')
+            ->where($status)
+            ->where($year)
+            ->where($cate)
+           ->orderBy($sort,'DESC')->get();
+         //   dd($dulieu);
+            $title = "  Bộ Lọc - Anime SQL";
+            return view('flim.category',['listflim'=>$dulieu,'title'=>$title]);
+        }
+        
+       
+    }
     
 
 }

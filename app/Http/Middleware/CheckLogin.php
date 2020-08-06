@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-
-class CheckLogin
+class Checklogin
 {
     /**
      * Handle an incoming request.
@@ -21,7 +20,6 @@ class CheckLogin
             return $next($request);
         }
         else{
-            
             return redirect()->back()->with('alert','Vui lòng đăng nhập để thực hiện tính năng này');
         }
     }
