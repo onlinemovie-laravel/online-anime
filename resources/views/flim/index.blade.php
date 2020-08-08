@@ -2,12 +2,12 @@
 @section('top-content')
 <div class="movie-list-index home-v2">
     <h1 class="header-list-index">
-        <span class="title-list-index">Phim sa</span>
+        <span class="title-list-index">Box phim</span>
     </h1>
     <!-- phia tren + phia duoi ben trai -->
     <ul class="last-film-box" id="movie-last-movie">     
         @if ($boxflim->count() == 0)
-            <h1>kontimthay phimm</h1>
+            <h1>Không tìm thấy phim</h1>
         @else
             @foreach ($boxflim as $item)
             <li>

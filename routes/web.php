@@ -75,6 +75,10 @@ Route::prefix('page')->name('page.')->group(function () {
 
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
     Route::post('sort','PageController@sort')->name('sortvideo'); 
+    
+    Route::post('search','PageController@search')->name('searchvideo'); 
+    
+    Route::post('comment','PageController@addcomment')->name('addcomment');
 
 });
 Route::middleware('checklogin')->prefix('user')->name('user.')->group(function () { 
@@ -82,7 +86,8 @@ Route::middleware('checklogin')->prefix('user')->name('user.')->group(function (
     Route::get('index/{id}','BoxflimController@show')->name('boxindex');
     Route::get('delete/{id}','BoxflimController@destroy')->name('boxdelete');
     Route::post('add', 'BoxflimController@store')->name('boxadd');
-    Route::get('add', 'BoxflimController@store')->name('boxadd');
+    Route::get( 'add', 'BoxflimController@store')->name('boxadd');
+
 
 });
 Route::fallback(function () {

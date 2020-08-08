@@ -17,8 +17,11 @@ class PageController extends Controller
     {
         $data = DB::table('flim')->where('id',$id)->first();
         $chap = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->get()->take(5);
+        $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
+        ->select('comment.*', 'users.name')
+        ->where('comment.flim_id',$id)->orderBy('comment.created_at','DESC')->get();
         if (isset($data)) {
-            return view('flim.infor',['flim'=>$data,'chap'=>$chap]);
+            return view('flim.infor',['flim'=>$data,'chap'=>$chap, 'comment'=>$data2    ]);
         } else {
             return view('404');
         }
@@ -57,27 +60,35 @@ class PageController extends Controller
         return view('flim.category',['listflim'=>$data,'title'=>$title]);
     }
     public function videopage($id){
+        $idflim = $id;
         $data = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->first();
         $title = DB::table('flim')->where('id',$id)->first();
+        $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
+        ->select('comment.*', 'users.name')
+        ->where('comment.flim_id',$id)->orderBy('comment.created_at','DESC')->get();
         if (isset($data)) {
-            return view('flim.player',['item'=>$data,'title'=>$title]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
         } else {
             $data = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->first();
             $title = DB::table('flim')->where('id',9)->first();
-            return view('flim.player',['item'=>$data,'title'=>$title]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
         }
         
         
     }
     public function videobychap($id){
+        $idflim = $id;
         $data = DB::table('chapter')->where('id',$id)->orderBy('updated_at','DESC')->first();
         $title = DB::table('flim')->where('id',$data->flim_id)->first();
+        $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
+        ->select('comment.*', 'users.name')
+        ->where('comment.flim_id',$id)->orderBy('comment.created_at','DESC')->get();
         if (isset($data)) {
-            return view('flim.player',['item'=>$data,'title'=>$title]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
         } else {
             $data = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->first();
             $title = DB::table('flim')->where('id',9)->first();
-            return view('flim.player',['item'=>$data,'title'=>$title]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
         }
         
         
@@ -130,6 +141,22 @@ class PageController extends Controller
         
        
     }
-    
-
+    public function search(Request $request)
+    {
+        $name = $request->name;
+        $data = DB::table('flim')->where('name', 'like', '%'.$name.'%')->orderBy('updated_at','DESC')->get();
+        $title = "Tìm phim theo tên - Anime SQL";
+        //dd($name);
+        return view('flim.category',['listflim'=>$data,'title'=>$title]);
+    }
+    public function addcomment(Request $request)
+    {
+        $data =($request->except('_token'));
+        $data['created_at'] = new DateTime();
+        $data['updated_at'] = new DateTime();
+        $idflim = $data['flim_id'];
+        //dd($data['flim_id']);
+        DB::table('comment')->insert($data);
+        return redirect()->route('page.videopage',['id'=>$idflim]);
+    }
 }

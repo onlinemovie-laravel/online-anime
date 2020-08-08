@@ -481,6 +481,32 @@
             </div>
         </div>
     </div>
+    {{-- <div>
+        <div>
+            <h3 class="text-center bg-success">BÌNH LUẬN PHIM</h3>
+        </div>
+        <div class="form-group">
+            <form action="{{route('page.addcomment')}}" method="POST">
+                @csrf
+                <textarea class="form-control bg-dark" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <input type="hidden" name="flim_id" value="{{$id}}">
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Gửi</button>
+            </form>
+        </div>
+        <div>
+            @foreach ($comment as $com)
+                <div class="comment-item bg-white" style="margin: 20px">
+                        <div class="content" >
+                            <span>Member: {{ $com->name}}</span>
+                            <span>  Thời gian: {{date("d/m/Y",strtotime($com->created_at))}}</span>
+                        </div>
+                        <div class="content" >Nội dung: {{ $com->content}}</div>                    
+                </div>
+            @endforeach
+        </div>
+    </div> --}}
     <div class="clear"></div>
+    
 </div>
 @endsection

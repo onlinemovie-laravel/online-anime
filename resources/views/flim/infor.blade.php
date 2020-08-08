@@ -10,7 +10,7 @@
                         <div class="col-6 movie-image">
                             <div class="movie-l-img">
                                 <img itemprop="image" alt="{{$flim->name}}" src="{{$flim->image}}" style="width:100%;height:100%;">
-                                <h2 class="hidden mt-2"></h2>
+                                <h2 class="hidden mt-2"></h2>                               
                                 <ul class="btn btn-block">
                                     @if(Auth::check()){
                                         <li class="item">
@@ -19,7 +19,7 @@
                                                 <input type="hidden" name="flim_id" value="{{$flim->id}}">
                                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                 <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Thêm  Vào Hộp</button>
-                                            </form>                                        
+                                            </form>                                
                                         </li>
                                     }
                                     @else{
@@ -102,8 +102,34 @@
                         <!-- <p><div class="fb-comments" data-href="http://anime47.com/phim/fruits-basket-2nd-season/m7551.html" data-num-posts="7" data-width="100%" data-colorscheme="dark" data-order-by="reverse_time"></div></p> -->
                         <div class="thaoluanchovui">
                             <p></p>
-                            <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" data-href="http://anime47.com/phim/fruits-basket-2nd-season/m7551.html" data-num-posts="7" width="100%" colorscheme="dark" data-order-by="reverse_time" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=907721805949566&amp;color_scheme=dark&amp;container_width=628&amp;height=100&amp;href=http%3A%2F%2Fanime47.com%2Fphim%2Ffruits-basket-2nd-season%2Fm7551.html&amp;locale=vi_VN&amp;order_by=reverse_time&amp;sdk=joey&amp;skin=dark" style="width: 100%;"><span style="vertical-align: bottom; width: 100%; height: 1871px;"><iframe name="f3f5b7a0e35efd8" width="1000px" height="100px" data-testid="fb:comments Facebook Social Plugin" title="fb:comments Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/plugins/comments.php?app_id=907721805949566&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df24daefe6792498%26domain%3Danime47.com%26origin%3Dhttps%253A%252F%252Fanime47.com%252Ff29de7b8cbc6e94%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=628&amp;height=100&amp;href=http%3A%2F%2Fanime47.com%2Fphim%2Ffruits-basket-2nd-season%2Fm7551.html&amp;locale=vi_VN&amp;order_by=reverse_time&amp;sdk=joey&amp;skin=dark" style="border: none; visibility: visible; width: 100%; height: 1871px;" class=""></iframe></span></div>
+                            {{-- <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" data-href="http://anime47.com/phim/fruits-basket-2nd-season/m7551.html" data-num-posts="7" width="100%" colorscheme="dark" data-order-by="reverse_time" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=907721805949566&amp;color_scheme=dark&amp;container_width=628&amp;height=100&amp;href=http%3A%2F%2Fanime47.com%2Fphim%2Ffruits-basket-2nd-season%2Fm7551.html&amp;locale=vi_VN&amp;order_by=reverse_time&amp;sdk=joey&amp;skin=dark" style="width: 100%;"><span style="vertical-align: bottom; width: 100%; height: 1871px;"><iframe name="f3f5b7a0e35efd8" width="1000px" height="100px" data-testid="fb:comments Facebook Social Plugin" title="fb:comments Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/plugins/comments.php?app_id=907721805949566&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df24daefe6792498%26domain%3Danime47.com%26origin%3Dhttps%253A%252F%252Fanime47.com%252Ff29de7b8cbc6e94%26relation%3Dparent.parent&amp;color_scheme=dark&amp;container_width=628&amp;height=100&amp;href=http%3A%2F%2Fanime47.com%2Fphim%2Ffruits-basket-2nd-season%2Fm7551.html&amp;locale=vi_VN&amp;order_by=reverse_time&amp;sdk=joey&amp;skin=dark" style="border: none; visibility: visible; width: 100%; height: 1871px;" class=""></iframe></span></div>
+                             --}}
                             <p></p>
+                        </div>
+                        <div>
+                            <div>
+                                <h3 class="text-center bg-success">BÌNH LUẬN PHIM</h3>
+                            </div>
+                            <div class="form-group">
+                                <form action="{{route('page.addcomment')}}" method="POST">
+                                    @csrf
+                                    <textarea class="form-control bg-dark" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input type="hidden" name="flim_id" value="{{$flim->id}}">
+                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                    <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Gửi</button>
+                                </form>
+                            </div>
+                            <div>
+                                @foreach ($comment as $com)
+                                    <div class="comment-item bg-white" style="margin: 20px">
+                                            <div class="content" style="margin-left:10px">
+                                                <span class="text-primary"><strong>{{ $com->name}}</strong></span>
+                                                <span><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                            </div>
+                                            <div class="content " style="margin-left:15px;color: black" >{{ $com->content}}</div>                    
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </blockquote>
