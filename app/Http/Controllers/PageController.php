@@ -157,6 +157,6 @@ class PageController extends Controller
         $idflim = $data['flim_id'];
         //dd($data['flim_id']);
         DB::table('comment')->insert($data);
-        return redirect()->route('page.videopage',['id'=>$idflim]);
+        return redirect()->route('page.inforpage',['id'=>$idflim]);
     }
 }
