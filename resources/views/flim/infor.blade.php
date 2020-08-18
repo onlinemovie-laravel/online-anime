@@ -110,6 +110,7 @@
                             <div>
                                 <h3 class="text-center bg-success">BÌNH LUẬN PHIM</h3>
                             </div>
+                            @if (Auth::check())
                             <div class="form-group">
                                 <form action="{{route('page.addcomment')}}" method="POST">
                                     @csrf
@@ -119,15 +120,31 @@
                                     <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Gửi</button>
                                 </form>
                             </div>
+                            @else
+                                <div class="form-group">
+                                </div>
+                            @endif
+                           
                             <div>
                                 @foreach ($comment as $com)
-                                    <div class="comment-item bg-white" style="margin: 20px">
+                                    @if (Auth::user()->id == $com->user_id)
+                                        <div class="comment-item bg-white" style="margin: 20px">
                                             <div class="content" style="margin-left:10px">
                                                 <span class="text-primary"><strong>{{ $com->name}}</strong></span>
                                                 <span><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
                                             </div>
                                             <div class="content " style="margin-left:15px;color: black" >{{ $com->content}}</div>                    
-                                    </div>
+                                        </div>
+                                    @else
+                                        <div class="comment-item bg-white" style="margin: 20px">
+                                            <div class="content" style="margin-left:10px">
+                                                <span class="text-primary"><strong>{{ $com->name}}</strong></span>
+                                                <span><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                            </div>
+                                            <div class="content " style="margin-left:15px;color: black" >{{ $com->content}}</div>                    
+                                        </div>
+                                    @endif
+                                   
                                 @endforeach
                             </div>
                         </div>
