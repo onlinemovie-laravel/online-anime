@@ -77,109 +77,196 @@
             </div>
             <h2 class="text-warning m-2"><span>Danh Sach Tap</span></h2>
             <div class="block2 servers mt-3 bg-white ">
-                <div class="row ">
-                    <div class="col-3">
-                      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1-100</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">101-200</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">201-300</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">301-400</a>
-                      </div>
-                    </div>
-                    <div class="col-8 pl-4  ">
+                <ul class="row m-1">
+                    @if ($list->count()==0)
+                        <h1 class="text-danger">Follow để nhận thông báo khi có tập mới nhất</h1>
+                    @else
+                        @foreach ($list as $rcmchap)
+                        <a href="{{route('page.chapvideo',['id'=>$rcmchap->id])}}" class="text-white col-md-1 mx-1 btn btn-primary"><li class=" nonemarker text-center  ">{{$rcmchap->chap}}</li></a>
+                        @endforeach
+                    @endif
+                    
+                    {{-- <li class="col-md-3"><a href="#" title="002" group="1">002</a></li>
+                    <li class="col-md-3"><a href="#" title="003" group="1">003</a></li>
+                    <li class="col-md-3"><a href="#" title="004" group="1">004</a></li>
+                    <li class="col-md-3"><a href="#" title="005" group="1">005</a></li>
+                    <li class="col-md-3"><a href="#" title="006" group="1">006</a></li>
+                    <li class="col-md-3"><a href="#" title="007" group="1">007</a></li>
+                    <li class="col-md-3"><a href="#" title="008-009" group="1">008-009</a></li>
+                    <li class="col-md-3"><a href="#" title="010" group="1">010</a></li>
+                    <li class="col-md-3"><a href="#" title="011" group="1">011</a></li>
+                    <li class="col-md-3"><a href="#" title="012" group="1">012</a></li>
+                    <li class="col-md-3"><a href="#" title="013" group="1">013</a></li>
+                    <li class="col-md-3 "><a href="#" title="014" group="1">014</a></li>
+                    <li class="col-md-3"><a href="#" title="015" group="1">015</a></li>
+                    <li class="col-md-3"><a href="#" title="016" group="1">016</a></li>
+                    <li class="col-md-3"><a href="#" title="017" group="1">017</a></li>
+                    <li class="col-md-3"><a href="#" title="018" group="1">018</a></li>
+                    <li class="col-md-3"><a href="#" title="019" group="1">019</a></li>
+                    <li class="col-md-3"><a href="#" title="020" group="1">020</a></li>
+                    <li class="col-md-3"><a href="#" title="021" group="1">021</a></li>
+                    <li class="col-md-3"><a href="#" title="022" group="1">022</a></li>
+                    <li class="col-md-3"><a href="#" title="023" group="1">023</a></li>
+                    <li class="col-md-3"><a href="#" title="024" group="1">024</a></li>
+                    <li class="col-md-3"><a href="#" title="025" group="1">025</a></li>
+                    <li class="col-md-3"><a href="#" title="026" group="1">026</a></li>
+                    <li class="col-md-3"><a href="#" title="027" group="1">027</a></li>
+                    <li class="nonemarker col-md-3"><a href="#" title="028" group="1">028</a></li>
+                    <li class="col-md-3"><a href="#" title="029-030" group="1">029-030</a></li>
+                    <li class="col-md-3"><a href="#" title="031" group="1">031</a></li>
+                    <li class="col-md-3"><a href="#" title="032" group="1">032</a></li>
+                    <li class="col-md-3"><a href="#" title="033" group="1">033</a></li>
+                    <li class="col-md-3"><a href="#" title="034" group="1">034</a></li>
+                    <li class="col-md-3"><a href="#" title="035" group="1">035</a></li>
+                    <li class="col-md-3"><a href="#" title="036-037" group="1">036-037</a></li>
+                    <li class="col-md-3"><a href="#" title="038" group="1">038</a></li>
+                    <li class="col-md-3"><a href="#" title="039" group="1">039</a></li>
+                    <li class="col-md-3"><a href="#" title="040-041" group="1">040-041</a></li>
+                    <li class="col-md-3"><a href="#" title="042" group="1">042</a></li>
+                    <li class="col-md-3"><a href="#" title="043" group="1">043</a></li>
+                    <li class="col-md-3"><a href="#" title="044" group="1">044</a></li>
+                    <li class="col-md-3"><a href="#" title="045" group="1">045</a></li>
+                    <li class="col-md-3"><a href="#" title="046" group="1">046</a></li>
+                    <li class="col-md-3"><a href="#" title="047" group="1">047</a></li>
+                    <li class="col-md-3"><a href="#" title="048" group="1">048</a></li>
+                    <li class="col-md-3"><a href="#" title="049" group="1">049</a></li>
+                    <li class="col-md-3"><a href="#" title="050" group="1">050</a></li>
+                    <li class="col-md-3"><a href="#" title="051-052" group="1">051-052</a></li>
+                    <li class="col-md-3"><a href="#" title="053-054" group="1">053-054</a></li>
+                    <li class="col-md-3"><a href="#" title="055" group="1">055</a></li>
+                    <li class="col-md-3"><a href="#" title="056" group="1">056</a></li>
+                    <li class="col-md-3"><a href="#" title="057-058" group="1">057-058</a></li>
+                    <li class="col-md-3"><a href="#" title="059" group="1">059</a></li>
+                    <li class="col-md-3"><a href="#" title="060" group="1">060</a></li>
+                    <li class="col-md-3"><a href="#" title="061" group="1">061</a></li>
+                    <li class="col-md-3"><a href="#" title="062" group="1">062</a></li>
+                    <li class="col-md-3"><a href="#" title="063" group="1">063</a></li>
+                    <li class="col-md-3"><a href="#" title="064-065" group="1">064-065</a></li>
+                    <li class="col-md-3"><a href="#" title="066" group="1">066</a></li>
+                    <li class="col-md-3"><a href="#" title="067" group="1">067</a></li>
+                    <li class="col-md-3"><a href="#" title="068-069" group="1">068-069</a></li>
+                    <li class="col-md-3"><a href="#" title="070" group="1">070</a></li>
+                    <li class="col-md-3"><a href="#" title="071" group="1">071</a></li>
+                    <li class="col-md-3"><a href="#" title="072" group="1">072</a></li>
+                    <li class="col-md-3"><a href="#" title="073" group="1">073</a></li>
+                    <li class="col-md-3"><a href="#" title="074" group="1">074</a></li>
+                    <li class="col-md-3"><a href="#" title="075" group="1">075</a></li>
+                    <li class="col-md-3"><a  href="#" title="076-077" group="1">076-077</a></li>
+                    <li class="col-md-3"><a  href="#" title="078-079" group="1">078-079</a></li>
+                    <li class="col-md-3"><a href="#" title="080" group="1">080</a></li>
+                    <li class="col-md-3"><a href="#" title="081" group="1">081</a></li>
+                    <li class="col-md-3"><a href="#" title="082" group="1">082</a></li>
+                    <li class="col-md-3"><a href="#" title="083" group="1">083</a></li>
+                    <li class="col-md-3"><a href="#" title="084" group="1">084</a></li>
+                    <li class="col-md-3"><a href="#" title="085" group="1">085</a></li>
+                    <li class="col-md-3"><a  href="#" title="086-087" group="1">086-087</a></li>
+                    <li class="col-md-3"><a href="#" title="088" group="1">088</a></li>
+                    <li class="col-md-3"><a href="#" title="089" group="1">089</a></li>
+                    <li class="col-md-3"><a href="#" title="090" group="1">090</a></li>
+                    <li class="col-md-3"><a href="#" title="091" group="1">091</a></li>
+                    <li class="col-md-3"><a href="#" title="092" group="1">092</a></li>
+                    <li class="col-md-3"><a href="#" title="093" group="1">093</a></li>
+                    <li class="col-md-3"><a href="#" title="094" group="1">094</a></li>
+                    <li class="col-md-3"><a href="#" title="095" group="1">095</a></li>
+                    <li class="col-md-3"><a href="#" title="096" group="1">096</a></li>
+                    <li class="col-md-3"><a href="#" title="097" group="1">097</a></li>
+                    <li class="col-md-3"><a href="#" title="098" group="1">098</a></li>
+                    <li class="col-md-3"><a href="#" title="099" group="1">099</a></li>
+                    <li class="col-md-3"><a href="#" title="100" group="1">100</a></li> --}}
+                </ul>
+                {{-- <div class="row ">
+                    <div class="col-12">
                       <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                            <ul class="row">
-                                <li class="col-md-3"><a href="#" title="001" group="1">001</a></li>
-                                <li class="col-md-3"><a href="#" title="002" group="1">002</a></li>
-                                <li class="col-md-3"><a href="#" title="003" group="1">003</a></li>
-                                <li class="col-md-3"><a href="#" title="004" group="1">004</a></li>
-                                <li class="col-md-3"><a href="#" title="005" group="1">005</a></li>
-                                <li class="col-md-3"><a href="#" title="006" group="1">006</a></li>
-                                <li class="col-md-3"><a href="#" title="007" group="1">007</a></li>
-                                <li class="col-md-3"><a href="#" title="008-009" group="1">008-009</a></li>
-                                <li class="col-md-3"><a href="#" title="010" group="1">010</a></li>
-                                <li class="col-md-3"><a href="#" title="011" group="1">011</a></li>
-                                <li class="col-md-3"><a href="#" title="012" group="1">012</a></li>
-                                <li class="col-md-3"><a href="#" title="013" group="1">013</a></li>
-                                <li class="col-md-3"><a href="#" title="014" group="1">014</a></li>
-                                <li class="col-md-3"><a href="#" title="015" group="1">015</a></li>
-                                <li class="col-md-3"><a href="#" title="016" group="1">016</a></li>
-                                <li class="col-md-3"><a href="#" title="017" group="1">017</a></li>
-                                <li class="col-md-3"><a href="#" title="018" group="1">018</a></li>
-                                <li class="col-md-3"><a href="#" title="019" group="1">019</a></li>
-                                <li class="col-md-3"><a href="#" title="020" group="1">020</a></li>
-                                <li class="col-md-3"><a href="#" title="021" group="1">021</a></li>
-                                <li class="col-md-3"><a href="#" title="022" group="1">022</a></li>
-                                <li class="col-md-3"><a href="#" title="023" group="1">023</a></li>
-                                <li class="col-md-3"><a href="#" title="024" group="1">024</a></li>
-                                <li class="col-md-3"><a href="#" title="025" group="1">025</a></li>
-                                <li class="col-md-3"><a href="#" title="026" group="1">026</a></li>
-                                <li class="col-md-3"><a href="#" title="027" group="1">027</a></li>
-                                <li class="col-md-3"><a href="#" title="028" group="1">028</a></li>
-                                <li class="col-md-3"><a href="#" title="029-030" group="1">029-030</a></li>
-                                <li class="col-md-3"><a href="#" title="031" group="1">031</a></li>
-                                <li class="col-md-3"><a href="#" title="032" group="1">032</a></li>
-                                <li class="col-md-3"><a href="#" title="033" group="1">033</a></li>
-                                <li class="col-md-3"><a href="#" title="034" group="1">034</a></li>
-                                <li class="col-md-3"><a href="#" title="035" group="1">035</a></li>
-                                <li class="col-md-3"><a href="#" title="036-037" group="1">036-037</a></li>
-                                <li class="col-md-3"><a href="#" title="038" group="1">038</a></li>
-                                <li class="col-md-3"><a href="#" title="039" group="1">039</a></li>
-                                <li class="col-md-3"><a href="#" title="040-041" group="1">040-041</a></li>
-                                <li class="col-md-3"><a href="#" title="042" group="1">042</a></li>
-                                <li class="col-md-3"><a href="#" title="043" group="1">043</a></li>
-                                <li class="col-md-3"><a href="#" title="044" group="1">044</a></li>
-                                <li class="col-md-3"><a href="#" title="045" group="1">045</a></li>
-                                <li class="col-md-3"><a href="#" title="046" group="1">046</a></li>
-                                <li class="col-md-3"><a href="#" title="047" group="1">047</a></li>
-                                <li class="col-md-3"><a href="#" title="048" group="1">048</a></li>
-                                <li class="col-md-3"><a href="#" title="049" group="1">049</a></li>
-                                <li class="col-md-3"><a href="#" title="050" group="1">050</a></li>
-                                <li class="col-md-3"><a href="#" title="051-052" group="1">051-052</a></li>
-                                <li class="col-md-3"><a href="#" title="053-054" group="1">053-054</a></li>
-                                <li class="col-md-3"><a href="#" title="055" group="1">055</a></li>
-                                <li class="col-md-3"><a href="#" title="056" group="1">056</a></li>
-                                <li class="col-md-3"><a href="#" title="057-058" group="1">057-058</a></li>
-                                <li class="col-md-3"><a href="#" title="059" group="1">059</a></li>
-                                <li class="col-md-3"><a href="#" title="060" group="1">060</a></li>
-                                <li class="col-md-3"><a href="#" title="061" group="1">061</a></li>
-                                <li class="col-md-3"><a href="#" title="062" group="1">062</a></li>
-                                <li class="col-md-3"><a href="#" title="063" group="1">063</a></li>
-                                <li class="col-md-3"><a href="#" title="064-065" group="1">064-065</a></li>
-                                <li class="col-md-3"><a href="#" title="066" group="1">066</a></li>
-                                <li class="col-md-3"><a href="#" title="067" group="1">067</a></li>
-                                <li class="col-md-3"><a href="#" title="068-069" group="1">068-069</a></li>
-                                <li class="col-md-3"><a href="#" title="070" group="1">070</a></li>
-                                <li class="col-md-3"><a href="#" title="071" group="1">071</a></li>
-                                <li class="col-md-3"><a href="#" title="072" group="1">072</a></li>
-                                <li class="col-md-3"><a href="#" title="073" group="1">073</a></li>
-                                <li class="col-md-3"><a href="#" title="074" group="1">074</a></li>
-                                <li class="col-md-3"><a href="#" title="075" group="1">075</a></li>
-                                <li class="col-md-3"><a  href="#" title="076-077" group="1">076-077</a></li>
-                                <li class="col-md-3"><a  href="#" title="078-079" group="1">078-079</a></li>
-                                <li class="col-md-3"><a href="#" title="080" group="1">080</a></li>
-                                <li class="col-md-3"><a href="#" title="081" group="1">081</a></li>
-                                <li class="col-md-3"><a href="#" title="082" group="1">082</a></li>
-                                <li class="col-md-3"><a href="#" title="083" group="1">083</a></li>
-                                <li class="col-md-3"><a href="#" title="084" group="1">084</a></li>
-                                <li class="col-md-3"><a href="#" title="085" group="1">085</a></li>
-                                <li class="col-md-3"><a  href="#" title="086-087" group="1">086-087</a></li>
-                                <li class="col-md-3"><a href="#" title="088" group="1">088</a></li>
-                                <li class="col-md-3"><a href="#" title="089" group="1">089</a></li>
-                                <li class="col-md-3"><a href="#" title="090" group="1">090</a></li>
-                                <li class="col-md-3"><a href="#" title="091" group="1">091</a></li>
-                                <li class="col-md-3"><a href="#" title="092" group="1">092</a></li>
-                                <li class="col-md-3"><a href="#" title="093" group="1">093</a></li>
-                                <li class="col-md-3"><a href="#" title="094" group="1">094</a></li>
-                                <li class="col-md-3"><a href="#" title="095" group="1">095</a></li>
-                                <li class="col-md-3"><a href="#" title="096" group="1">096</a></li>
-                                <li class="col-md-3"><a href="#" title="097" group="1">097</a></li>
-                                <li class="col-md-3"><a href="#" title="098" group="1">098</a></li>
-                                <li class="col-md-3"><a href="#" title="099" group="1">099</a></li>
-                                <li class="col-md-3"><a href="#" title="100" group="1">100</a></li>
-                            </ul>
-                        </div>
+                        <ul class="row">
+                            <li class="col-md-3"><a href="#" title="001" group="1">001</a></li>
+                            <li class="col-md-3"><a href="#" title="002" group="1">002</a></li>
+                            <li class="col-md-3"><a href="#" title="003" group="1">003</a></li>
+                            <li class="col-md-3"><a href="#" title="004" group="1">004</a></li>
+                            <li class="col-md-3"><a href="#" title="005" group="1">005</a></li>
+                            <li class="col-md-3"><a href="#" title="006" group="1">006</a></li>
+                            <li class="col-md-3"><a href="#" title="007" group="1">007</a></li>
+                            <li class="col-md-3"><a href="#" title="008-009" group="1">008-009</a></li>
+                            <li class="col-md-3"><a href="#" title="010" group="1">010</a></li>
+                            <li class="col-md-3"><a href="#" title="011" group="1">011</a></li>
+                            <li class="col-md-3"><a href="#" title="012" group="1">012</a></li>
+                            <li class="col-md-3"><a href="#" title="013" group="1">013</a></li>
+                            <li class="col-md-3"><a href="#" title="014" group="1">014</a></li>
+                            <li class="col-md-3"><a href="#" title="015" group="1">015</a></li>
+                            <li class="col-md-3"><a href="#" title="016" group="1">016</a></li>
+                            <li class="col-md-3"><a href="#" title="017" group="1">017</a></li>
+                            <li class="col-md-3"><a href="#" title="018" group="1">018</a></li>
+                            <li class="col-md-3"><a href="#" title="019" group="1">019</a></li>
+                            <li class="col-md-3"><a href="#" title="020" group="1">020</a></li>
+                            <li class="col-md-3"><a href="#" title="021" group="1">021</a></li>
+                            <li class="col-md-3"><a href="#" title="022" group="1">022</a></li>
+                            <li class="col-md-3"><a href="#" title="023" group="1">023</a></li>
+                            <li class="col-md-3"><a href="#" title="024" group="1">024</a></li>
+                            <li class="col-md-3"><a href="#" title="025" group="1">025</a></li>
+                            <li class="col-md-3"><a href="#" title="026" group="1">026</a></li>
+                            <li class="col-md-3"><a href="#" title="027" group="1">027</a></li>
+                            <li class="col-md-3"><a href="#" title="028" group="1">028</a></li>
+                            <li class="col-md-3"><a href="#" title="029-030" group="1">029-030</a></li>
+                            <li class="col-md-3"><a href="#" title="031" group="1">031</a></li>
+                            <li class="col-md-3"><a href="#" title="032" group="1">032</a></li>
+                            <li class="col-md-3"><a href="#" title="033" group="1">033</a></li>
+                            <li class="col-md-3"><a href="#" title="034" group="1">034</a></li>
+                            <li class="col-md-3"><a href="#" title="035" group="1">035</a></li>
+                            <li class="col-md-3"><a href="#" title="036-037" group="1">036-037</a></li>
+                            <li class="col-md-3"><a href="#" title="038" group="1">038</a></li>
+                            <li class="col-md-3"><a href="#" title="039" group="1">039</a></li>
+                            <li class="col-md-3"><a href="#" title="040-041" group="1">040-041</a></li>
+                            <li class="col-md-3"><a href="#" title="042" group="1">042</a></li>
+                            <li class="col-md-3"><a href="#" title="043" group="1">043</a></li>
+                            <li class="col-md-3"><a href="#" title="044" group="1">044</a></li>
+                            <li class="col-md-3"><a href="#" title="045" group="1">045</a></li>
+                            <li class="col-md-3"><a href="#" title="046" group="1">046</a></li>
+                            <li class="col-md-3"><a href="#" title="047" group="1">047</a></li>
+                            <li class="col-md-3"><a href="#" title="048" group="1">048</a></li>
+                            <li class="col-md-3"><a href="#" title="049" group="1">049</a></li>
+                            <li class="col-md-3"><a href="#" title="050" group="1">050</a></li>
+                            <li class="col-md-3"><a href="#" title="051-052" group="1">051-052</a></li>
+                            <li class="col-md-3"><a href="#" title="053-054" group="1">053-054</a></li>
+                            <li class="col-md-3"><a href="#" title="055" group="1">055</a></li>
+                            <li class="col-md-3"><a href="#" title="056" group="1">056</a></li>
+                            <li class="col-md-3"><a href="#" title="057-058" group="1">057-058</a></li>
+                            <li class="col-md-3"><a href="#" title="059" group="1">059</a></li>
+                            <li class="col-md-3"><a href="#" title="060" group="1">060</a></li>
+                            <li class="col-md-3"><a href="#" title="061" group="1">061</a></li>
+                            <li class="col-md-3"><a href="#" title="062" group="1">062</a></li>
+                            <li class="col-md-3"><a href="#" title="063" group="1">063</a></li>
+                            <li class="col-md-3"><a href="#" title="064-065" group="1">064-065</a></li>
+                            <li class="col-md-3"><a href="#" title="066" group="1">066</a></li>
+                            <li class="col-md-3"><a href="#" title="067" group="1">067</a></li>
+                            <li class="col-md-3"><a href="#" title="068-069" group="1">068-069</a></li>
+                            <li class="col-md-3"><a href="#" title="070" group="1">070</a></li>
+                            <li class="col-md-3"><a href="#" title="071" group="1">071</a></li>
+                            <li class="col-md-3"><a href="#" title="072" group="1">072</a></li>
+                            <li class="col-md-3"><a href="#" title="073" group="1">073</a></li>
+                            <li class="col-md-3"><a href="#" title="074" group="1">074</a></li>
+                            <li class="col-md-3"><a href="#" title="075" group="1">075</a></li>
+                            <li class="col-md-3"><a  href="#" title="076-077" group="1">076-077</a></li>
+                            <li class="col-md-3"><a  href="#" title="078-079" group="1">078-079</a></li>
+                            <li class="col-md-3"><a href="#" title="080" group="1">080</a></li>
+                            <li class="col-md-3"><a href="#" title="081" group="1">081</a></li>
+                            <li class="col-md-3"><a href="#" title="082" group="1">082</a></li>
+                            <li class="col-md-3"><a href="#" title="083" group="1">083</a></li>
+                            <li class="col-md-3"><a href="#" title="084" group="1">084</a></li>
+                            <li class="col-md-3"><a href="#" title="085" group="1">085</a></li>
+                            <li class="col-md-3"><a  href="#" title="086-087" group="1">086-087</a></li>
+                            <li class="col-md-3"><a href="#" title="088" group="1">088</a></li>
+                            <li class="col-md-3"><a href="#" title="089" group="1">089</a></li>
+                            <li class="col-md-3"><a href="#" title="090" group="1">090</a></li>
+                            <li class="col-md-3"><a href="#" title="091" group="1">091</a></li>
+                            <li class="col-md-3"><a href="#" title="092" group="1">092</a></li>
+                            <li class="col-md-3"><a href="#" title="093" group="1">093</a></li>
+                            <li class="col-md-3"><a href="#" title="094" group="1">094</a></li>
+                            <li class="col-md-3"><a href="#" title="095" group="1">095</a></li>
+                            <li class="col-md-3"><a href="#" title="096" group="1">096</a></li>
+                            <li class="col-md-3"><a href="#" title="097" group="1">097</a></li>
+                            <li class="col-md-3"><a href="#" title="098" group="1">098</a></li>
+                            <li class="col-md-3"><a href="#" title="099" group="1">099</a></li>
+                            <li class="col-md-3"><a href="#" title="100" group="1">100</a></li>
+                        </ul>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <ul class="row">
                                 <li class="col-md-3"><a href="#" title="101-102" group="2">101-102</a></li>
@@ -477,7 +564,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                </div> --}}
             </div>
         </div>
     </div>

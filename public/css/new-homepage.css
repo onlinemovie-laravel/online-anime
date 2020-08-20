@@ -34,3 +34,6 @@
 .movie-kinhdien span.status h2{font-size:16px;}
 .movie-kinhdien span.status h3{font-size:12px;}
 }
+.nonemarker {
+	list-style-type: none;
+}
