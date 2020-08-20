@@ -14,4 +14,5 @@
         <link rel="stylesheet" href="{{asset('/css/style1.css')}}">
         <link href="{{asset('/css/new-homepage.css')}}" rel="stylesheet" />
     </head>
+    
     <body>

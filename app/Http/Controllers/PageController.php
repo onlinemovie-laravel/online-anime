@@ -62,16 +62,18 @@ class PageController extends Controller
     public function videopage($id){
         $idflim = $id;
         $data = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->first();
+        $listchaprcm = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->get();
         $title = DB::table('flim')->where('id',$id)->first();
         $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
         ->select('comment.*', 'users.name')
         ->where('comment.flim_id',$id)->orderBy('comment.created_at','DESC')->get();
         if (isset($data)) {
-            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim , 'list'=>$listchaprcm]);
         } else {
             $data = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->first();
             $title = DB::table('flim')->where('id',9)->first();
-            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
+            $listchaprcm = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->get();
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim,'list'=>$listchaprcm]);
         }
         
         
@@ -80,15 +82,17 @@ class PageController extends Controller
         $idflim = $id;
         $data = DB::table('chapter')->where('id',$id)->orderBy('updated_at','DESC')->first();
         $title = DB::table('flim')->where('id',$data->flim_id)->first();
+        $listchaprcm = DB::table('chapter')->where('flim_id',$data->flim_id)->orderBy('updated_at','DESC')->get();
         $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
         ->select('comment.*', 'users.name')
         ->where('comment.flim_id',$id)->orderBy('comment.created_at','DESC')->get();
         if (isset($data)) {
-            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim , 'list'=>$listchaprcm]);
         } else {
             $data = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->first();
             $title = DB::table('flim')->where('id',9)->first();
-            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim]);
+            $listchaprcm = DB::table('chapter')->where('flim_id',9)->orderBy('updated_at','DESC')->get();
+            return view('flim.player',['item'=>$data,'title'=>$title, 'comment'=>$data2, 'id'=>$idflim , 'list'=>$listchaprcm]);
         }
         
         
