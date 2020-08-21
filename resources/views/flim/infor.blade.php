@@ -124,25 +124,28 @@
                                 <div class="form-group">
                                 </div>
                             @endif
-                           
-                            <div>
+                            
+                            <div id="box-comment" data="{{$flim->id}}" data-url="{{route('loadchat')}}">
                                 @foreach ($comment as $com)
                                     @if (Auth::user()->id == $com->user_id)
-                                        <div class="comment-item bg-white" style="margin: 20px">
-                                            <div class="content" style="margin-left:10px">
+                                        <div class="comment-item bg-white" style="margin: 20px;border-radius: 5px;">
+                                            <div class="content" style="margin-left:10px; ">
                                                 <span class="text-primary"><strong>{{ $com->name}}</strong></span>
-                                                <span><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                                <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>                                             
                                             </div>
-                                            <div class="content " style="margin-left:15px;color: black" >{{ $com->content}}</div>                    
+                                            <div class="content" style="margin:5px; color: black;border-radius: 5px; background-color: aquamarine;" >{{ $com->content}}</div>                                          
+                                            <button type="submit" id="{{$com->id}}" data="{{$com->flim_id}}" data-url="{{route('xoacomment')}}" name="dbtn" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button>
+                                            
                                         </div>
                                     @else
-                                        <div class="comment-item bg-white" style="margin: 20px">
-                                            <div class="content" style="margin-left:10px">
+                                        <div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                                            <div class="content" style="margin-left:10px; ">
                                                 <span class="text-primary"><strong>{{ $com->name}}</strong></span>
-                                                <span><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                                <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
                                             </div>
-                                            <div class="content " style="margin-left:15px;color: black" >{{ $com->content}}</div>                    
+                                            <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >{{ $com->content}}</div>                    
                                         </div>
+                                        
                                     @endif
                                    
                                 @endforeach

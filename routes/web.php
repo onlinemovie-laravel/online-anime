@@ -79,7 +79,7 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::post('search','PageController@search')->name('searchvideo'); 
     
     Route::post('comment','PageController@addcomment')->name('addcomment')->middleware('checklogin');
-
+    
 });
 Route::middleware('checklogin')->prefix('user')->name('user.')->group(function () { 
     
@@ -97,5 +97,7 @@ Route::fallback(function () {
 Auth::routes();
 Auth::routes(['verify' => true]);
 Route::post('pagination', 'AjaxController@loadallflim')->name('pagination');
+Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
+Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');

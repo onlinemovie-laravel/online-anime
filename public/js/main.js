@@ -28,4 +28,34 @@ $(document).ready(function (){
             }
         })
     });
+    
+    setInterval(function(){
+        var num = $('#box-comment').attr('data');
+        var url = $('#box-comment').data('url');
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{id:num },
+            success: function(result){
+                //console.log("run");
+                 $('#box-comment').html(result);
+            }
+        })
+    },300000);
+    $('button[name="dbtn"]').on('click', function(){
+        var num = $(this).attr('id');
+        var flimid = $(this).attr('data');
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{idcm:num , id:flimid},
+            success: function(result){
+                console.log(result);
+                 $('#box-comment').html(result);
+            }
+        })
+        
+    });
+
 });

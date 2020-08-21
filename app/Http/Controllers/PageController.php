@@ -163,4 +163,5 @@ class PageController extends Controller
         DB::table('comment')->insert($data);
         return redirect()->route('page.inforpage',['id'=>$idflim]);
     }
+    
 }

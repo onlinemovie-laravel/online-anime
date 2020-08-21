@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AjaxController extends Controller
 {
@@ -37,5 +38,48 @@ class AjaxController extends Controller
         }
      
         return $xhmtl;
+    }
+    public function loadchat(Request $request){
+        // $data =($request->except('_token'));
+        // dd($data);
+        $flim_id = $request->id;
+        $comment = DB::table('comment')->join('users','comment.user_id','=','users.id')
+        ->select('comment.*', 'users.name')
+        ->where('comment.flim_id',$flim_id)->orderBy('comment.created_at','DESC')->get();
+        $xhtml = null;
+
+        foreach ($comment as $com){
+            if (Auth::user()->id == $com->user_id){
+                $xhtml.= '<div class="comment-item bg-white" style="margin: 20px;border-radius: 5px;">
+                <div class="content" style="margin-left:10px; ">
+                        <span class="text-primary"><strong>'.$com->name.'</strong></span>
+                        <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
+                    </div>
+                    
+                    <div class="content" style="margin:5px; color: black;border-radius: 5px; background-color: aquamarine;" >'.$com->content.'</div>                    
+                    <button type="submit" id="'.$com->id.'" data="'.$com->flim_id.'" data-url="'.route('xoacomment').'" name="dbtn" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button>
+                    </div>                        
+                </div>';
+            }
+            else{
+                $xhtml.= '<div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                <div class="content" style="margin-left:10px; ">
+                        <span class="text-primary"><strong>'.$com->name.'</strong></span>
+                        <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
+                    </div>
+                    <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >'.$com->content.'</div>                    
+                </div>';
+            }
+            
+    }
+        return $xhtml;
+    }
+    public function xoacomment(Request $request){
+        $id = $request->idcm;     
+        DB::table('comment')->where('id',$id)->delete();
+        $xhtml = null;
+        $xhtml = AjaxController::loadchat($request);
+        //dd($xhtml);
+        return $xhtml;
     }
 }
