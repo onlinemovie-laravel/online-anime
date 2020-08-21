@@ -41,17 +41,23 @@ $(document).ready(function (){
                  $('#box-comment').html(result);
             }
         })
-    },300000);
-    $('button[name="dbtn"]').on('click', function(){
+    },3000);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).on('click','button[name="dbtn"]', function(){
         var num = $(this).attr('id');
         var flimid = $(this).attr('data');
         var url = $(this).data('url');
+        console.log(num);
         $.ajax({
             url: url,
             method:'POST',
             data:{idcm:num , id:flimid},
             success: function(result){
-                console.log(result);
+               
                  $('#box-comment').html(result);
             }
         })
