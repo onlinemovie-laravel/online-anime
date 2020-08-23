@@ -30,7 +30,7 @@ class AjaxController extends Controller
                  </div>
                  <div class="movie-meta">
                      <div class="movie-title-1">'.$data[$i]['name'].'</div>
-                     <span class="fbcom-left">89</span><span class="viewed-right">'.$data[$i]['total_views'].'</span><span class="ribbon">10/'.$data[$i]['total_chap'].' tập</span>
+                     <span class="fbcom-left">&nbsp;</span><span class="viewed-right">'.$data[$i]['total_views'].'</span>
                  </div>
              </div>
          </a>
@@ -118,8 +118,5 @@ class AjaxController extends Controller
         return $newviews;
     }
 
-    public function test(Request $request){
-      
-            dd($data);
-    }
+    
 }
