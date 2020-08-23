@@ -51,7 +51,7 @@ class AjaxController extends Controller
         foreach ($comment as $com){
             if (Auth::check()) {
                 if (Auth::user()->id == $com->user_id){
-                    $xhtml.= '<div class="comment-item bg-white" style="margin: 20px;border-radius: 5px;">
+                    $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px;border-radius: 5px;">
                     <div class="content" style="margin-left:10px; ">
                             <span class="text-primary"><strong>'.$com->name.'</strong></span>
                             <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
@@ -63,7 +63,7 @@ class AjaxController extends Controller
                     </div>';
                 }
                 else{
-                    $xhtml.= '<div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                    $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                     <div class="content" style="margin-left:10px; ">
                             <span class="text-primary"><strong>'.$com->name.'</strong></span>
                             <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
@@ -72,7 +72,7 @@ class AjaxController extends Controller
                     </div>';
                 }
             } else {
-                $xhtml.= '<div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                 <div class="content" style="margin-left:10px; ">
                         <span class="text-primary"><strong>'.$com->name.'</strong></span>
                         <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
@@ -86,6 +86,22 @@ class AjaxController extends Controller
     }
         return $xhtml;
     }
+
+    public function addcomment(Request $request){
+        $data =($request->except('_token'));
+        $data['created_at'] = new DateTime();
+        $data['updated_at'] = new DateTime();
+        $idflim = $data['flim_id'];
+        $request['id'] =  $data['flim_id'];
+       // dd($request);
+        DB::table('comment')->insert($data);
+        $xhtml = null;
+        $xhtml = AjaxController::loadchat($request);
+        //dd($xhtml);
+        return $xhtml;
+    }
+
+
     public function xoacomment(Request $request){
         $id = $request->idcm;     
         DB::table('comment')->where('id',$id)->delete();
@@ -94,17 +110,12 @@ class AjaxController extends Controller
         //dd($xhtml);
         return $xhtml;
     }
-    public function addcomment(Request $request)
-    {
-        $data =($request->except('_token'));
-        $data['created_at'] = new DateTime();
-        $data['updated_at'] = new DateTime();
-        $idflim = $data['flim_id'];
-        //dd($data['flim_id']);
-        DB::table('comment')->insert($data);
-        $xhtml = null;
-        $xhtml = AjaxController::loadchat($request);
-        //dd($xhtml);
-        return $xhtml;
+
+    public function viewscount(Request $request){  
+        $count = DB::table('chapter')->select('views')->where('id',$request->id)->first() ;
+        $newviews = $count->views + 1;       
+        DB::table('chapter')->where('id',$request->id)->update(['views' => $newviews]);
+        return $newviews;
     }
+
 }

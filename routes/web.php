@@ -62,6 +62,12 @@ Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function
 
         Route::get('destroy/{id}','ChapterController@destroy')->name('destroy');
     });
+    Route::prefix('comment')->name('comment.')->group(function () { 
+        Route::get('index','CommentController@index')->name('index');
+        Route::post('show','CommentController@showcomment')->name('showcomment');
+
+        Route::post('destroy','CommentController@destroy')->name('destroy');
+    });
 });
 Route::prefix('page')->name('page.')->group(function () { 
     Route::get('flim/{id}','PageController@inforpage')->name('inforpage');
@@ -94,6 +100,10 @@ Route::fallback(function () {
 // login-logout
 Auth::routes();
 Auth::routes(['verify' => true]);
+//
+Route::get('test', function () {
+    return view('cpadmin.modules.comment.index');
+});
 Route::post('pagination', 'AjaxController@loadallflim')->name('pagination');
 Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
 Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');

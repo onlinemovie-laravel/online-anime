@@ -35,7 +35,7 @@
                 <span class="info-box-number">TOTAL : {{$count['cmt']}}</span>
                 <p class="card-text"><small class="text-muted">Last updated {{$count['date']}}</small></p>
                 <p class="card-text"><small class="text-muted">{{$count['time']}}</small></p>
-                <a _ngcontent-ldw-c121="" class="small text-primary stretched-link" href="/dashboard">View Details</a>
+                <a _ngcontent-ldw-c121="" class="small text-primary stretched-link" href="/admin/comment/index">View Details</a>
               </div>
             </div>
         </div>

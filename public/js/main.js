@@ -1,5 +1,7 @@
 
 $(document).ready(function (){
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     $('.noneactive').first().addClass('active');
     $('#pagi').each(function() {
         $($(this)).on('click', 'li', function(e){
@@ -47,22 +49,6 @@ $(document).ready(function (){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).on('click','button[name="dbtn"]', function(){
-        var num = $(this).attr('id');
-        var flimid = $(this).attr('data');
-        var url = $(this).data('url');
-        console.log(num);
-        $.ajax({
-            url: url,
-            method:'POST',
-            data:{idcm:num , flim_id:flimid},
-            success: function(result){
-               
-                 $('#box-comment').html(result);
-            }
-        })
-        
-    });
     $("#formaddchat").submit(function(e) {
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -82,4 +68,50 @@ $(document).ready(function (){
     
         
     });
+    $(document).on('click','button[name="dbtn"]', function(){
+        var num = $(this).attr('id');
+        var flimid = $(this).attr('data');
+        var url = $(this).data('url');
+        console.log(num);
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{idcm:num , flim_id:flimid},
+            success: function(result){
+               
+                 $('#box-comment').html(result);
+            }
+        })
+        
+    });
+    $("select[name='admin-comment']").change(function (){
+        var flim_id = $(this).val();
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{flim_id:flim_id}, 
+            dataType: 'html',          
+            success: function(result){          
+                $('#admin-boxcomment').html(result);
+                
+            }
+        })
+    });
+    $(document).on('click','button[name="admin-xoacomment"]', function(){
+        var num = $(this).attr('id');
+        var flimid = $(this).attr('data');
+        var url = $(this).data('url');
+        console.log(num);
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{id:num , flim_id:flimid},
+            success: function(result){           
+                 $('#admin-boxcomment').html(result);
+            }
+        })
+        
+    });
+    
 });

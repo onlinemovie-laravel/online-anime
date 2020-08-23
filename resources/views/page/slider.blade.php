@@ -20,7 +20,7 @@
                                     </div>
                                     <div class="movie-meta">
                                         <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
-                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
+                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span>
                                     </div>
                                 </div>
                             </a>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="movie-meta">
                                         <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
-                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
+                                        <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span>
                                     </div>
                                 </div>
                             </a>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="movie-meta">
                                     <div class="movie-title-1">{{$rdflim[$i]->name}}</div>
-                                    <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span><span class="ribbon">25/{{$rdflim[$i]->total_chap}} tập</span>
+                                    <span class="movie-title-2">{{$rdflim[$i]->subname}}</span><span class="movie-title-chap">204688 </span>
                                 </div>
                             </div>
                         </a>
