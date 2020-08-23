@@ -112,12 +112,12 @@
                             </div>
                             @if (Auth::check())
                             <div class="form-group">
-                                <form action="{{route('page.addcomment')}}" method="POST">
+                                <form action="{{route('addcomment')}}" method="POST" id="formaddchat">
                                     @csrf
-                                    <textarea class="form-control bg-dark" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control bg-dark" name="content" id="contenttext" rows="3"></textarea>
                                     <input type="hidden" name="flim_id" value="{{$flim->id}}">
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                    <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Gửi</button>
+                                    <button id="btn-film-watch" class="btn btn-outline-success mt-1" type="submit">Gửi</button>
                                 </form>
                             </div>
                             @else

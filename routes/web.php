@@ -76,9 +76,7 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::get('destroy/{id}','PageController@destroy')->name('destroy');
     Route::post('sort','PageController@sort')->name('sortvideo'); 
     
-    Route::post('search','PageController@search')->name('searchvideo'); 
-    
-    Route::post('comment','PageController@addcomment')->name('addcomment')->middleware('checklogin');
+    Route::post('search','PageController@search')->name('searchvideo');    
     
 });
 Route::middleware('checklogin')->prefix('user')->name('user.')->group(function () { 
@@ -99,5 +97,7 @@ Auth::routes(['verify' => true]);
 Route::post('pagination', 'AjaxController@loadallflim')->name('pagination');
 Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
 Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');
+Route::post('comment','AjaxController@addcomment')->name('addcomment')->middleware('checklogin');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');

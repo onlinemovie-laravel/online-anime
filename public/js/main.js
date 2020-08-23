@@ -35,7 +35,7 @@ $(document).ready(function (){
         $.ajax({
             url: url,
             method:'POST',
-            data:{id:num },
+            data:{flim_id:num },
             success: function(result){
                 //console.log("run");
                  $('#box-comment').html(result);
@@ -55,7 +55,7 @@ $(document).ready(function (){
         $.ajax({
             url: url,
             method:'POST',
-            data:{idcm:num , id:flimid},
+            data:{idcm:num , flim_id:flimid},
             success: function(result){
                
                  $('#box-comment').html(result);
@@ -63,5 +63,23 @@ $(document).ready(function (){
         })
         
     });
+    $("#formaddchat").submit(function(e) {
 
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    
+        var form = $(this);
+        var url = form.attr('action');
+        
+        $.ajax({
+               method: "POST",
+               url: url,
+               data: form.serialize(), // serializes the form's elements.
+               success: function(result){
+                $('#contenttext').val('');
+                $('#box-comment').html(result);
+                }
+             });
+    
+        
+    });
 });

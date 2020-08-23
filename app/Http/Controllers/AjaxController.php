@@ -42,7 +42,7 @@ class AjaxController extends Controller
     public function loadchat(Request $request){
         // $data =($request->except('_token'));
         // dd($data);
-        $flim_id = $request->id;
+        $flim_id = $request->flim_id;
         $comment = DB::table('comment')->join('users','comment.user_id','=','users.id')
         ->select('comment.*', 'users.name')
         ->where('comment.flim_id',$flim_id)->orderBy('comment.created_at','DESC')->get();
@@ -89,6 +89,19 @@ class AjaxController extends Controller
     public function xoacomment(Request $request){
         $id = $request->idcm;     
         DB::table('comment')->where('id',$id)->delete();
+        $xhtml = null;
+        $xhtml = AjaxController::loadchat($request);
+        //dd($xhtml);
+        return $xhtml;
+    }
+    public function addcomment(Request $request)
+    {
+        $data =($request->except('_token'));
+        $data['created_at'] = new DateTime();
+        $data['updated_at'] = new DateTime();
+        $idflim = $data['flim_id'];
+        //dd($data['flim_id']);
+        DB::table('comment')->insert($data);
         $xhtml = null;
         $xhtml = AjaxController::loadchat($request);
         //dd($xhtml);

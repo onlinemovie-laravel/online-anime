@@ -153,15 +153,6 @@ class PageController extends Controller
         //dd($name);
         return view('flim.category',['listflim'=>$data,'title'=>$title]);
     }
-    public function addcomment(Request $request)
-    {
-        $data =($request->except('_token'));
-        $data['created_at'] = new DateTime();
-        $data['updated_at'] = new DateTime();
-        $idflim = $data['flim_id'];
-        //dd($data['flim_id']);
-        DB::table('comment')->insert($data);
-        return redirect()->route('page.inforpage',['id'=>$idflim]);
-    }
+    
     
 }
