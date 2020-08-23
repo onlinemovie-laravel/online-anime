@@ -20,7 +20,8 @@
                                 </div>
                                 <div class="movie-meta">
                                     <div class="movie-title-1">{{$item->name}}</div>
-                                    <span class="fbcom-left">89</span><span class="viewed-right">{{$item->total_views}}</span><span class="ribbon">10/{{$item->total_chap}} tập</span>
+                                    <span class="fbcom-left">&nbsp;</span><span class="viewed-right">{{$item->total_views}}</span>
+                                    {{-- <span class="ribbon">10/{{$item->total_chap}} tập</span> --}}
                                 </div>
                             </div>
                         </a>
@@ -47,7 +48,8 @@
                             </div>
                             <div class="movie-meta">
                                 <div class="movie-title-1">{{$items->name}}</div>
-                                <span class="fbcom-left">89</span><span class="viewed-right">{{$items->total_views}}</span><span class="ribbon">10/{{$items->total_chap}} tập</span>
+                                <span class="fbcom-left"> &nbsp;</span><span class="viewed-right">{{$items->total_views}}</span>
+                                {{-- <span class="ribbon">10/{{$items->total_chap}} tập</span> --}}
                             </div>
                         </div>
                     </a>

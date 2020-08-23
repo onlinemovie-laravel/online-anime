@@ -39,7 +39,13 @@
                             <div class="movie-meta-info">
                                 <dl class="movie-dl">
                                     <dt class="movie-dt">Trạng thái: </dt>
-                                    <dd class="movie-dd imdb">09+10/{{$flim->total_chap}} Tập</dd>
+                                    <dd class="movie-dd imdb">
+                                        @if ($flim->status == 0)
+                                            Hoàn Thành
+                                        @else
+                                            Chưa Hoàn Thành                                            
+                                        @endif    
+                                    </dd>
                                     <br>
                                     <dt class="movie-dt">Thể loại: </dt>
                                     <dd class="movie-dd dd-cat">
@@ -54,7 +60,14 @@
                                         @endforeach</dd>
                                     <br>
                                     <dt class="movie-dt">Tập Mới Nhất: </dt>
-                                    <dd class="movie-dd">Tập 10</dd>
+                                    <dd class="movie-dd">
+                                        @if ($chap->count() == 0)
+                                        Cant Load Lasted update
+                                        @else
+                                       
+                                        Tập {{$chap[0]->chap}}
+                                       
+                                        @endif</dd>
                                     <br>		
                                     <dt class="movie-dt">Ngày Đăng: </dt>
                                     <dd class="movie-dd">{{date("d/m/Y",strtotime($flim->created_at))}}</dd>
@@ -74,11 +87,18 @@
                                     Mới cập nhật: 
                                     <div class="block2 servers">
                                         <div class="server" data-type="watch">
-                                            <div class="name"><img style="margin-top: -7px;" src="style/cabfs1.png"> <span>CabFansub</span>  </div>
+                                            
                                             <div class="episodes col-lg-12 col-md-12 col-sm-12">
                                                 <ul>
-                                                    <li><a href="#" title="08">08</a></li>
-                                                    <li><a href="#" title="07">07</a></li>
+                                                    @if ($chap->count() == 0)
+                                                        <li><a href="" class="text-danger">Cant Load Lasted update</a></li>
+                                                    @else
+                                                        @foreach ($chap as $item)
+                                                        <li><a href="{{route('page.chapvideo',['id'=>$item->id])}}">{{$item->chap}}</a></li>
+                                                        @endforeach
+                                                    @endif
+                                                    
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -112,12 +132,12 @@
                             </div>
                             @if (Auth::check())
                             <div class="form-group">
-                                <form action="{{route('page.addcomment')}}" method="POST">
+                                <form action="{{route('page.addcomment')}}" method="POST" id="formaddchat">
                                     @csrf
                                     <textarea class="form-control bg-dark" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     <input type="hidden" name="flim_id" value="{{$flim->id}}">
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                    <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Gửi</button>
+                                    <button id="btn-film-watch" class="btn btn-outline-success mt-1" type="submit">Gửi</button>
                                 </form>
                             </div>
                             @else
@@ -129,7 +149,7 @@
                                 @foreach ($comment as $com)
                                 @if (Auth::check())
                                     @if (Auth::user()->id == $com->user_id)
-                                    <div class="comment-item bg-white" style="margin: 20px;border-radius: 5px;">
+                                    <div class="comment-item bg-white p-1" style="margin: 20px;border-radius: 5px;">
                                         <div class="content" style="margin-left:10px; ">
                                             <span class="text-primary"><strong>{{ $com->name}}</strong></span>
                                             <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>                                             
@@ -139,7 +159,7 @@
                                         
                                     </div>
                                     @else
-                                        <div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                                        <div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                                             <div class="content" style="margin-left:10px; ">
                                                 <span class="text-primary"><strong>{{ $com->name}}</strong></span>
                                                 <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
@@ -149,7 +169,7 @@
                                         
                                     @endif
                                 @else
-                                    <div class="comment-item bg-white" style="margin: 20px; border-radius: 5px;">
+                                    <div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                                         <div class="content" style="margin-left:10px; ">
                                             <span class="text-primary"><strong>{{ $com->name}}</strong></span>
                                             <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>

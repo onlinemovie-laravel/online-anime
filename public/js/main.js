@@ -1,5 +1,7 @@
 
 $(document).ready(function (){
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     $('.noneactive').first().addClass('active');
     $('#pagi').each(function() {
         $($(this)).on('click', 'li', function(e){
@@ -41,11 +43,29 @@ $(document).ready(function (){
                  $('#box-comment').html(result);
             }
         })
-    },3000);
+    },30000000);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+    $("#formaddchat").submit(function(e) {
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    
+        var form = $(this);
+        var url = form.attr('action');
+        
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: form.serialize(), // serializes the form's elements.
+               success: function(result){
+                $('#box-comment').html(result);
+                }
+             });
+    
+        
     });
     $(document).on('click','button[name="dbtn"]', function(){
         var num = $(this).attr('id');
@@ -63,5 +83,36 @@ $(document).ready(function (){
         })
         
     });
-
+    
+    $(document).on('click','.jw-icon-display', function(){
+        var chapid = $('#data').data('id');
+        var url = $('#data').data('url');
+        console.log(chapid);
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{id:chapid },
+            success: function(result){
+               
+                 console.log(result);
+            }
+        })
+        
+    });
+    $(document).on('click','.logotop', function(e){
+        e.preventDefault();
+        var chapid = $('#data').data('id');
+        var url = $('#data').data('url');
+        console.log(chapid);
+        $.ajax({
+            url: url,
+            method:'POST',
+            
+            success: function(result){
+               
+                 console.log(result);
+            }
+        })
+        
+    });
 });

@@ -27,7 +27,8 @@
                         </div>
                         <div class="movie-meta">
                             <div class="movie-title-1">{{$listflim[$i]->name}}</div>
-                            <span class="fbcom-left">89</span><span class="viewed-right">{{$listflim[$i]->total_views}}</span><span class="ribbon">10/{{$listflim[$i]->total_chap}} tập</span>
+                            <span class="fbcom-left">&nbsp;</span><span class="viewed-right">{{$listflim[$i]->total_views}}</span>
+                            {{-- <span class="ribbon">10/{{$listflim[$i]->total_chap}} tập</span> --}}
                         </div>
                     </div>
                 </a>
