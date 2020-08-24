@@ -75,7 +75,7 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::get('category/{name}','PageController@pagecate')->name('pagecate'); 
     Route::get('year/{year}','PageController@yearpage')->name('yearpage');
     Route::get('status/{status}','PageController@statuspage')->name('statuspage'); 
-
+    Route::get('mostflimviews','PageController@mostflimviews')->name('mostflimviews');
     Route::get('video/{id}','PageController@videopage')->name('videopage');
     Route::get('chapvideo/{id}','PageController@videobychap')->name('chapvideo'); 
 

@@ -36,6 +36,12 @@ class PageController extends Controller
         return view('flim.category',['listflim'=>$data,'title'=>$title]);
     }
 
+    public function mostflimviews(){
+        $data = DB::table('flim')->orderBy('total_views','DESC')->get();
+        $title = "Phim xem nhiều nhất  - Anime SQL";
+        return view('flim.category',['listflim'=>$data,'title'=>$title]);
+    }
+
     public function pagecate($name){
         $data = DB::table('flim')->where('category', 'like', '%'.$name.'%')->get();
         $title = "THỂ LOẠI PHIM :".str_replace('-',' ',$name)." - Anime SQL";

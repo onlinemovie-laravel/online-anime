@@ -29,11 +29,9 @@
                 </div>
             </li>
             <li>
-                <a class="nav-link dropdown-toggle" href="#" id="moreview" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Xem Nhiều</a>
-                <div class="dropdown-menu" aria-labelledby="moreview">
-                    <a class="dropdown-item text-danger" href="#">Theo BỘ</a>
-                    <a class="dropdown-item text-danger" href="#">Theo Tập</a>
-                </div>
+                
+                    <a  href="{{route('page.mostflimviews')}}">Xem Nhiều</a>
+                    
             </li>
             <li>
                 <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Bộ Lọc</a>                
