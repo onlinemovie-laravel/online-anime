@@ -64,6 +64,7 @@ Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function
     });
     Route::prefix('comment')->name('comment.')->group(function () { 
         Route::get('index','CommentController@index')->name('index');
+        Route::post('index','CommentController@index')->name('index');
         Route::post('show','CommentController@showcomment')->name('showcomment');
 
         Route::post('destroy','CommentController@destroy')->name('destroy');
@@ -108,6 +109,6 @@ Route::post('pagination', 'AjaxController@loadallflim')->name('pagination');
 Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
 Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');
 Route::post('comment','AjaxController@addcomment')->name('addcomment')->middleware('checklogin');
-
+Route::post('viewscount','AjaxController@viewscount')->name('viewscount');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');

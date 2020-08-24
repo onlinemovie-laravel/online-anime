@@ -44,11 +44,6 @@ $(document).ready(function (){
             }
         })
     },3000);
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
     $("#formaddchat").submit(function(e) {
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -113,5 +108,19 @@ $(document).ready(function (){
         })
         
     });
-    
+    $(document).on('click','.jw-icon-display', function(){
+        var chapid = $('#data').data('id');
+        var url = $('#data').data('url');
+        console.log(chapid);
+        $.ajax({
+            url: url,
+            method:'POST',
+            data:{id:chapid },
+            success: function(result){
+               
+                 console.log(result);
+            }
+        })
+        
+    });
 });

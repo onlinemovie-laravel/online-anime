@@ -99,7 +99,7 @@ class CommentController extends Controller
                     <td>'.$c->content.'</td>
                     <td>'.$c->user_id.'</td>
                     <td>'.date("d/m/Y-h:i:s",strtotime($c->created_at)).'</td>
-                    <td><button type="submit" id="'.$c->id.'" data="'.$c->flim_id.'" data-url="'.route('admin.comment.destroy').'" name="admin-xoacomment" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button></td></tr>';
+                    <td><button type="submit" id="'.$c->id.'" data="'.$c->flim_id.'" data-url="'.route('admin.comment.destroy').'" name="admin-xoacomment" class=" btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button></td></tr>';
         }
         
         return $xhtml;

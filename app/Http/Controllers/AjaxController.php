@@ -118,8 +118,5 @@ class AjaxController extends Controller
         return $newviews;
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> f922ca8cce8bedb0403779fade21298f5c047e32
+
 }
