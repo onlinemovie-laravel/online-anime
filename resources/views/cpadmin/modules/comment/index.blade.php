@@ -1,5 +1,5 @@
 @extends('cpadmin.master')
-@section('title','List Flim')
+@section('title','List Comment')
 @section('content')
 <section class="content">
     <!-- Default box -->
