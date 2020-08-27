@@ -53,10 +53,9 @@ class AjaxController extends Controller
                 if (Auth::user()->id == $com->user_id){
                     $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px;border-radius: 5px;">
                     <div class="content" style="margin-left:10px; ">
-                            <span class="text-primary"><strong>'.$com->name.'</strong></span>
-                            <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
-                        </div>
-                        
+                        <span class="text-primary" style="font-size: 16px;"><strong>'.$com->name.'</strong></span>
+                        <span style="margin-left: 10px;font-size: 10px;">'.date("d/m/Y",strtotime($com->created_at)).'</span>
+                        </div>  
                         <div class="content" style="margin:5px; color: black;border-radius: 5px; background-color: aquamarine;" >'.$com->content.'</div>                    
                         <button type="submit" id="'.$com->id.'" data="'.$com->flim_id.'" data-url="'.route('xoacomment').'" name="dbtn" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button>
                         </div>                        
@@ -65,8 +64,8 @@ class AjaxController extends Controller
                 else{
                     $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                     <div class="content" style="margin-left:10px; ">
-                            <span class="text-primary"><strong>'.$com->name.'</strong></span>
-                            <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
+                        <span class="text-primary" style="font-size: 16px;"><strong>'.$com->name.'</strong></span>
+                        <span style="margin-left: 10px;font-size: 10px;">'.date("d/m/Y",strtotime($com->created_at)).'</span>
                         </div>
                         <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >'.$com->content.'</div>                    
                     </div>';
@@ -74,8 +73,8 @@ class AjaxController extends Controller
             } else {
                 $xhtml.= '<div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                 <div class="content" style="margin-left:10px; ">
-                        <span class="text-primary"><strong>'.$com->name.'</strong></span>
-                        <span><small>'. date("d/m/Y",strtotime($com->created_at)).'</small></span>
+                    <span class="text-primary" style="font-size: 16px;"><strong>'.$com->name.'</strong></span>
+                    <span style="margin-left: 10px;font-size: 10px;">'.date("d/m/Y",strtotime($com->created_at)).'</span>
                     </div>
                     <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >'.$com->content.'</div>                    
                 </div>';
@@ -117,6 +116,20 @@ class AjaxController extends Controller
         DB::table('chapter')->where('id',$request->id)->update(['views' => $newviews]);
         return $newviews;
     }
-
+    function searchflim(Request $request)
+    {
+        if($request->name)
+        {
+            $name = $request->name;
+            $data = DB::table('flim')->where('name', 'like', '%'.$name.'%')->get(10);
+            $xhtml = null;
+            foreach($data as $d)
+            {
+               $xhtml .= '<li><a class="dropdown-item">'.$d->name.'</a></li>';
+           }
+           //dd($xhtml);
+           return $xhtml;
+       }
+    }
 
 }

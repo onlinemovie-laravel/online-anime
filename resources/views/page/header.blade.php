@@ -7,13 +7,21 @@
                 <form method="POST" id="form-search" action="{{ route('page.searchvideo')}}">
                     @csrf
                     <div>
-                        <input type="text" name="name" placeholder="Tìm: tên anime ... " value="" onkeyup="onSearch(this.value)" id="searchkeyword" autocomplete="off">
+                        <input type="text"  class="typeahead form-control" name="name" placeholder="Tìm: tên anime ... " value="" autocomplete="off">
                         <input style="display: none;" id="searchsubmit" class="" value=" " type="submit">
                     </div>
                 </form>
-                <div class="search-suggest" style="display: none;">
-                    <ul style="margin-bottom: 0;" id="search-suggest-list"></ul>
-                </div>
+                <script type="text/javascript">
+                    var path = "{{ route('autocomplete') }}";
+                    $('input.typeahead').typeahead({
+                        source:  function (name, process) {
+                        return $.get(path, { name: name }, function (data) {
+                                return process(data);
+                            });
+                        }
+                    });
+                </script>
+                
             </div>
             <div class="widget_user_header">
                 @guest

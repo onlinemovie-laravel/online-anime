@@ -13,6 +13,9 @@
 
         <link rel="stylesheet" href="{{asset('/css/style1.css')}}">
         <link href="{{asset('/css/new-homepage.css')}}" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     </head>
     
     <body>

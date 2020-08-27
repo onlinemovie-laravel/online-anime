@@ -110,5 +110,8 @@ Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
 Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');
 Route::post('comment','AjaxController@addcomment')->name('addcomment')->middleware('checklogin');
 Route::post('viewscount','AjaxController@viewscount')->name('viewscount');
+// Route::get('search', 'AjaxController@searchflim')->name('searchflim');
+Route::get('search', ['as'=>'search', 'uses'=>'PageController@search']);
+Route::get('autocomplete', ['as'=>'autocomplete', 'uses'=>'PageController@autocomplete']);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@home')->name('admin')->middleware('checkadmin');

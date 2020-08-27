@@ -112,7 +112,7 @@
                     <div class="content" id="film-content" itemscope="" itemtype="http://schema.org/Review" itemprop="review">
                         <div class="news-article">
                             <p></p>
-                            {{$flim->description}}
+                            {!! $flim->description !!}
                             <p></p>
                         </div>
                         <p>Chúc các bạn <a href="/" title="ANIME VIETSUB ONLINE | ANIME MÙA | ANIME HAY | ANIME TOP | XEM ANIME ONLINE ">xem anime vietsub</a> vui vẻ tại ANIMESQL.COM</p>
@@ -147,30 +147,28 @@
                                 @foreach ($comment as $com)
                                 @if (Auth::check())
                                     @if (Auth::user()->id == $com->user_id)
-                                    <div class="comment-item bg-white p-1" style="margin: 20px;border-radius: 5px;">
-                                        <div class="content" style="margin-left:10px; ">
-                                            <span class="text-primary"><strong>{{ $com->name}}</strong></span>
-                                            <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>                                             
+                                        <div class="comment-item bg-white p-1" style="margin: 20px;border-radius: 5px;">
+                                            <div class="content" style="margin-left:10px; ">
+                                                <span class="text-primary" style="font-size: 16px;"><strong>{{ $com->name}}</strong></span>
+                                                <span style="margin-left: 10px;font-size: 10px;">{{date("d/m/Y",strtotime($com->created_at))}}</span>                                             
+                                            </div>
+                                            <div class="content" style="margin:5px; color: black;border-radius: 5px; background-color: aquamarine;" >{{ $com->content}}</div>                                          
+                                            <button type="submit" id="{{$com->id}}" data="{{$com->flim_id}}" data-url="{{route('xoacomment')}}" name="dbtn" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button>               
                                         </div>
-                                        <div class="content" style="margin:5px; color: black;border-radius: 5px; background-color: aquamarine;" >{{ $com->content}}</div>                                          
-                                        <button type="submit" id="{{$com->id}}" data="{{$com->flim_id}}" data-url="{{route('xoacomment')}}" name="dbtn" class="dbtn btn btn-danger p-1" style="margin-left: 10px;font-size: 12px;" >Xóa</button>
-                                        
-                                    </div>
                                     @else
                                         <div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                                             <div class="content" style="margin-left:10px; ">
-                                                <span class="text-primary"><strong>{{ $com->name}}</strong></span>
-                                                <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                                <span class="text-primary" style="font-size: 16px;"><strong>{{ $com->name}}</strong></span>
+                                                <span style="margin-left: 10px;font-size: 10px;">{{date("d/m/Y",strtotime($com->created_at))}}</span>
                                             </div>
                                             <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >{{ $com->content}}</div>                    
-                                        </div>
-                                        
+                                        </div> 
                                     @endif
                                 @else
                                     <div class="comment-item bg-white p-1" style="margin: 20px; border-radius: 5px;">
                                         <div class="content" style="margin-left:10px; ">
-                                            <span class="text-primary"><strong>{{ $com->name}}</strong></span>
-                                            <span style="margin-left: 10px"><small> {{date("d/m/Y",strtotime($com->created_at))}}</small></span>
+                                            <span class="text-primary" style="font-size: 16px;"><strong>{{ $com->name}}</strong></span>
+                                                <span style="margin-left: 10px;font-size: 10px;">{{date("d/m/Y",strtotime($com->created_at))}}</span>
                                         </div>
                                         <div class="content " style="margin:5px;color: black; border-radius: 5px; background-color: grey;" >{{ $com->content}}</div>                    
                                     </div>

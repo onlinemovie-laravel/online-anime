@@ -159,6 +159,11 @@ class PageController extends Controller
         //dd($name);
         return view('flim.category',['listflim'=>$data,'title'=>$title]);
     }
-    
+    public function autocomplete(Request $request)
+    {
+        $data = DB::table('flim')->select('name', 'total_chap')->where('name', 'like','%'.$request->name.'%')->get();
+        
+        return response()->json($data);
+    }
     
 }

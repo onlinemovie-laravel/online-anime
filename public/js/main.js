@@ -32,18 +32,23 @@ $(document).ready(function (){
     });
     
     setInterval(function(){
-        var num = $('#box-comment').attr('data');
+        var flimid = $('#box-comment').attr('data');
         var url = $('#box-comment').data('url');
-        $.ajax({
-            url: url,
-            method:'POST',
-            data:{flim_id:num },
-            success: function(result){
-                //console.log("run");
-                 $('#box-comment').html(result);
-            }
-        })
-    },3000);
+        if (flimid !== undefined|| url !== undefined) {
+            $.ajax({
+                url: url,
+                method:'POST',
+                data:{flim_id:flimid },
+                success: function(result){
+                    //console.log("run");
+                     $('#box-comment').html(result);
+                }
+            })
+        } else {
+            
+        }
+        
+    },3000000);
     $("#formaddchat").submit(function(e) {
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -123,4 +128,6 @@ $(document).ready(function (){
         })
         
     });
+    
+
 });

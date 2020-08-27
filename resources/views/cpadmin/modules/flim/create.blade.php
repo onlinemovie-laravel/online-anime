@@ -40,9 +40,9 @@
                             <label for="email" class="col-md-2 col-form-label text-md-left">{{ __('Description') }}</label>
                             <div class="col-md-10">
                                 <textarea class="form-control" rows="3" placeholder="Description ..." name="description">{{old('description')}}</textarea>
-                                {{-- <script>
+                                <script>
                                     CKEDITOR.replace('description');
-                                </script> --}}
+                                </script>
                             </div>
                         </div>
                         <div class="form-group row">
