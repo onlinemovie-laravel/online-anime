@@ -16,6 +16,7 @@
       $("#example1").DataTable({
         "responsive": true,
         "autoWidth": false,
+    
       });
     });
     function checkdelete(msg){

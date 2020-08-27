@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="card">
+        <div class="card" style="width: 100%">
             <div class="card-header">
                 <h3 class="card-title">Danh sách Phim mới cập nhật</h3>
                 <div class="card-tools">
@@ -82,7 +82,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td><img src="{{$item->image}}" width="180px" height="250px" alt=""> </td>
                             <td>{{ str_replace('-',' ',$item->name)}}</td>
-                            <td>{{$item->description}}</td>
+                            <td>{!!$item->description!!}</td>
                             <td>{{$item->category}}</td>
                             <td>{{$item->total_chap}}</td>
                             <td>{{$item->year}}</td>

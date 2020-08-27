@@ -72,7 +72,6 @@ $(document).ready(function (){
         var num = $(this).attr('id');
         var flimid = $(this).attr('data');
         var url = $(this).data('url');
-        console.log(num);
         $.ajax({
             url: url,
             method:'POST',
@@ -102,7 +101,6 @@ $(document).ready(function (){
         var num = $(this).attr('id');
         var flimid = $(this).attr('data');
         var url = $(this).data('url');
-        console.log(num);
         $.ajax({
             url: url,
             method:'POST',
@@ -116,14 +114,13 @@ $(document).ready(function (){
     $(document).on('click','.jw-icon-display', function(){
         var chapid = $('#data').data('id');
         var url = $('#data').data('url');
-        console.log(chapid);
         $.ajax({
             url: url,
             method:'POST',
             data:{id:chapid },
             success: function(result){
                
-                 console.log(result);
+                //  console.log(result);
             }
         })
         

@@ -20,12 +20,12 @@
                         <span data-icon="7" class="icon"></span>
                         <span class="info">
                         <span class="follow">Liên hệ quảng cáo:</span>
-                        <span class="num">toiviet.com@gmail.com</span>
+                        <span class="num">nkatwuang@gmail.com</span>
                         </span>
                         </a>
                     </div>
                     <div class="clear"></div>
-                    <div class="copyright">&copy;  2017 All Rights Reserved •</span></div>
+                    <div class="copyright">&copy;  2020 All Rights Reserved •</span></div>
                 </div>
             </div>
         </div>

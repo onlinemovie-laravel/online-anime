@@ -34,7 +34,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td><img src="{{$item->image}}" width="180px" height="250px" alt=""> </td>
                         <td>{{ str_replace('-',' ',$item->name)}}</td>
-                        <td>{{$item->description}}</td>
+                        <td>{!! $item->description !!}</td>
                         <td>{{$item->category}}</td>
                         <td>{{$item->total_chap}}</td>
                         <td>{{$item->year}}</td>
