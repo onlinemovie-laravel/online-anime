@@ -71,6 +71,7 @@ Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function
     });
 });
 Route::prefix('page')->name('page.')->group(function () { 
+    Route::get('FAQ','PageController@faq')->name('faq');
     Route::get('flim/{id}','PageController@inforpage')->name('inforpage');
     Route::get('all','PageController@show')->name('show');
     Route::get('category/{name}','PageController@pagecate')->name('pagecate'); 

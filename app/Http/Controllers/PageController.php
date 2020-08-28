@@ -103,6 +103,11 @@ class PageController extends Controller
         
         
     }
+    
+    public function faq(){
+        return view('flim.faq');
+    }
+
     public function sort(Request $request)
     {
         $status = [];

@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </li>
-            <li><a href="#">Hỏi-Đáp</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{route('page.faq')}}">Hỏi-Đáp</a></li>
+            <li><a href="mailto:nkatwang@gmail.com">Contact</a></li>
         </ul>
         <div  class="collapse" id="collapseExample" style="max-height: 250px">
             <form class="needs-validation" action="{{Route('page.sortvideo')}}" method="POST">
