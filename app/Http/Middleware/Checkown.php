@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 
-class Checkadmin
+class Checkown
 {
     /**
      * Handle an incoming request.
@@ -16,17 +15,13 @@ class Checkadmin
      */
     public function handle($request, Closure $next)
     {
+        dd($request);
         if (Auth::check()) {
-            if (Auth::user()->lv == 9) {
-                return $next($request);
-            } else {
-                return redirect()->route('home');
-            }
             
+            return $next($request);
         }
         else{
-            return redirect()->route('login');
+            return redirect()->back()->with('alert','Vui lòng đăng nhập để thực hiện tính năng này');
         }
-        
     }
 }

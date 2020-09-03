@@ -96,8 +96,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        DB::transaction(function () use($id){
+        DB::table('comment')->where('user_id',$id)->delete();   
         DB::table('users')->where('id',$id)->delete();
-
+        });
         return redirect()->route('admin.user.index');
     }
 }

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','FlimController@show')->name('index');
+Route::get('/','FlimController@show')->name('index')->middleware('verified');
 
 Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function () { 
     Route::prefix('user')->name('user.')->group(function () { 

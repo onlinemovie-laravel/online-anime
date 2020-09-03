@@ -80,10 +80,12 @@ class ChapterController extends Controller
         $data['created_at'] = new DateTime();
         $data['updated_at'] = new DateTime();
        // dd($data);
-        DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
-        DB::table('chapter')->insert($data); 
+        DB::transaction(function () use($data) {
+            DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
+            DB::table('chapter')->insert($data); 
+        });
         $usersubrice = DB::table('users')->join('boxflim', 'users.id', '=', 'boxflim.user_id')->where('boxflim.flim_id',$data['flim_id'])->get(); 
-        $link =  env("APP_URL").":8000/page/flim/".$data['flim_id'];
+        $link =  route('page.chapvideo',['id'=>$data['flim_id']]);
         $emails = array();
          foreach($usersubrice as $user){
             array_push($emails,$user->email);
@@ -118,8 +120,9 @@ class ChapterController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('flim')->orderBy('created_at','DESC')->get();
-        $chap = DB::table('chapter')->where('id',$id)->first();
+       
+            $data = DB::table('flim')->orderBy('created_at','DESC')->get();
+            $chap = DB::table('chapter')->where('id',$id)->first();
         return view('cpadmin.modules.chap.edit',['flim'=>$data,'chapter'=>$chap]);
     }
 
@@ -157,8 +160,11 @@ class ChapterController extends Controller
         
         $data['updated_at'] = new DateTime();
        // dd($data);
-        DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
-        DB::table('chapter')->where('id',$id)->update($data); 
+        DB::transaction(function () use($data,$id) {
+           
+            DB::table('flim')->where('id',$data['flim_id'])->update(['updated_at'=>$data['updated_at']]); 
+            DB::table('chapter')->where('id',$id)->update($data); 
+        });
         return redirect()->route('admin.chapter.index');
     }
 

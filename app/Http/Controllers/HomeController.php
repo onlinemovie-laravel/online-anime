@@ -24,9 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('flim')->orderBy('updated_at','DESC')->get();
-
-        return view('index',['collectionlastmovie'=>$data]);  
+        $data = DB::table('flim')->orderBy('updated_at','DESC')->get()->take(28);
+        $kamenmovie = DB::table('flim')->where('category', 'like', '%Kamen-Rider%')->get()->take(8);
+        return view('index',['collectionlastmovie'=>$data,'kamenrider'=>$kamenmovie]);  
     }
     public function home(){
         $data = DB::table('flim')->orderBy('created_at','DESC')->take(5)->get();

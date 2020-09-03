@@ -145,9 +145,10 @@ class FlimController extends Controller
      */
     public function destroy($id)
     {
+        DB::transaction(function () use($id) {
         DB::table('chapter')->where('flim_id',$id)->delete();
         DB::table('flim')->where('id',$id)->delete();
-
+        });
         return redirect()->route('admin.flim.index');
     }
 }
