@@ -12,8 +12,8 @@ class AjaxController extends Controller
         $data = [];
         
         $data = $req->arr ;
-        $startposition = ($req->num * 5) - 5;
-        $endposition = $startposition + 5;
+        $startposition = ($req->num * 24) - 24;
+        $endposition = $startposition + 24;
         if ($endposition > count($data)) {
            $endposition = count($data);
         } else {

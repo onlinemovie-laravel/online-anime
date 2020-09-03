@@ -39,8 +39,8 @@
                         <td>{{$item->total_chap}}</td>
                         <td>{{$item->year}}</td>
                         <td> {{date("d/m/Y-h:i:s",strtotime($item->created_at))}}</td>
-                        <td><a href="{{Route('admin.flim.edit',['id'=>$item->id])}}">EDIT</a></td>
-                        <td><a href="{{Route('admin.flim.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this Flim ?')">DELETE</a></td>
+                        <td><a class="bg-primary rounded-pill p-2 text-center" href="{{Route('admin.flim.edit',['id'=>$item->id])}}">EDIT</a></td>
+                        <td><a class="bg-danger rounded-pill p-2 text-center" href="{{Route('admin.flim.destroy',['id'=>$item->id])}}" onclick="return checkdelete('Are You Sure delete this Flim ?')">DELETE</a></td>
                     </tr>         
                     @endforeach    
                </tbody>

@@ -5,13 +5,12 @@
         <span class="title-list-index">{{$title}}</span>
     </h1>
     <div style="display: none">
-        {{
-            $count = $listflim->count()
-
-        }}
-            @if ($count >= 5)
-                {{$count = 5}}
-            @endif
+       
+        @if ($listflim->count() > 24)
+        {{$count = 24}}
+        @else
+        {{$count = $listflim->count()}}
+        @endif
     </div>
     <ul class="last-film-box" id="movie-last-movie" data-lis="{{Hash::make($listflim)}}" data-list="{{$listflim}}">
         @if ($listflim->count() == 0)
@@ -55,12 +54,12 @@
     </ul >
     <div class="clear"></div>
     <ul id="pagi" class="pagination pagination-lg mt-3">
-        @if ($listflim->count() <= 5 && $listflim->count() > 0)
+        @if ($listflim->count() <= 24 && $listflim->count() > 0)
         <li class="noneactive active"><a class="load-flim" data-url="{{route('pagination')}}" aria-details="1">1</a></li>
         @else
         <p style="display: none"><{{$temp = 1}} </p>
         @for ($i = 0 ;$i < $listflim->count() ; $i++)
-            @if ($i%5 ==0)
+            @if ($i%24 ==0)
                 <li class="noneactive" ><a class="load-flim"data-url="{{route('pagination')}}" style="cursor: default;" aria-details="{{$temp}}">{{$temp}}</a></li>               
                 <p style="display: none"><{{$temp++}} </p>
             @else

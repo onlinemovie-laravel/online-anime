@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function show()
     {
-        $data = DB::table('flim')->orderBy('updated_at','DESC')->get()->take(28);
+        $data = DB::table('flim')->orderBy('updated_at','DESC')->get();
         $title = "Tẩt Cả Phim - Anime SQL";
         return view('flim.category',['listflim'=>$data,'title'=>$title]);
     }
