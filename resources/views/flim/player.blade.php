@@ -1,6 +1,7 @@
 @extends('welcome')
 @section('top-content')
 
+@if (isset($item))
 <div class="w-auto">
     <h2 class="m-2"><span class="text-warning">{{$title->name}}-EP:{{$item->chap}}</span></h2>
     <div class="movie-info" id="data" data-id="{{$item->id}}" data-url="{{route('viewscount')}}">
@@ -89,4 +90,10 @@
     
     
 </div>
+@else
+    <div class="w-auto">
+        <h2 class="m-2"><span class=" text-center text-warning">Không tìm thấy video phù hợp</span></h2>
+    </div>
+@endif
+
 @endsection

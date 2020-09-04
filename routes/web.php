@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','FlimController@show')->name('index')->middleware('verified');
+Route::get('/','FlimController@show')->name('index');
 
 Route::middleware('checkadmin')->prefix('admin')->name('admin.')->group(function () { 
     Route::prefix('user')->name('user.')->group(function () { 
@@ -87,12 +87,18 @@ Route::prefix('page')->name('page.')->group(function () {
     Route::post('search','PageController@search')->name('searchvideo');    
     
 });
-Route::middleware('checklogin')->prefix('user')->name('user.')->group(function () { 
+Route::middleware(['checklogin','verified'])->prefix('user')->name('user.')->group(function () { 
     
     Route::get('index/{id}','BoxflimController@show')->name('boxindex');
     Route::get('delete/{id}','BoxflimController@destroy')->name('boxdelete');
     Route::post('add', 'BoxflimController@store')->name('boxadd');
     Route::get( 'add', 'BoxflimController@store')->name('boxadd');
+    Route::get('viewprofile/{id}', 'ProfileController@show')->name('view')->middleware('Checkown'); 
+    Route::get('editprofile/{id}','ProfileController@edit')->name('edit');
+    Route::post('updateprofile/{id}','ProfileController@update')->name('update');
+    Route::get('changePassword/{id}','ProfileController@edit')->name('changepws');
+    Route::post('changePassword/{id}','ProfileController@changePassword')->name('change');
+
 
 
 });
@@ -103,13 +109,10 @@ Route::fallback(function () {
 Auth::routes();
 Auth::routes(['verify' => true]);
 //
-Route::get('test', function () {
-    return view('cpadmin.modules.comment.index');
-});
 Route::post('pagination', 'AjaxController@loadallflim')->name('pagination');
 Route::post('loadchat','AjaxController@loadchat')->name('loadchat');
-Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware('checklogin');
-Route::post('comment','AjaxController@addcomment')->name('addcomment')->middleware('checklogin');
+Route::post('xoacomment','AjaxController@xoacomment')->name('xoacomment')->middleware(['checklogin','verified']);
+Route::post('comment','AjaxController@addcomment')->name('addcomment')->middleware(['checklogin','verified']);
 Route::post('viewscount','AjaxController@viewscount')->name('viewscount');
 // Route::get('search', 'AjaxController@searchflim')->name('searchflim');
 Route::get('search', ['as'=>'search', 'uses'=>'PageController@search']);

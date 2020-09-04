@@ -40,8 +40,9 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/profile">{{ __('profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('user.view',['id' => Auth::user()->id])}}">{{ __('Trang cá nhân') }}</a>
                         <a class="dropdown-item" href="{{ route('user.boxindex',['id' => Auth::user()->id])}}">{{ __('Tủ Flim') }}</a>
+                        <a class="dropdown-item" href="{{ route('user.changepws',['id' => Auth::user()->id])}}">{{ __('Đổi Mật khẩu') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

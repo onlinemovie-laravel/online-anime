@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Checkown
 {
@@ -15,13 +16,18 @@ class Checkown
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
+       
         if (Auth::check()) {
             
-            return $next($request);
+            if (Auth::user()->id  == $request->route('id')) {
+                return $next($request);
+            } else {
+                return response(view('404'));
+            }
+            
         }
         else{
-            return redirect()->back()->with('alert','Vui lòng đăng nhập để thực hiện tính năng này');
+            return redirect()->route('login');
         }
     }
 }
