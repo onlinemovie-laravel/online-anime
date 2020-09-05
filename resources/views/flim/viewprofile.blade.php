@@ -67,7 +67,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 control-label">Birthday:</label>
                         <div class="col-lg-5">
-                            <input type="text" class="form-control" name="birthday" value="{{$item->birthday}}" >
+                            <input type="date" class="form-control" name="birthday" value="{{$item->birthday}}" >
                         </div>
                     </div>
                     <div class="form-group row">

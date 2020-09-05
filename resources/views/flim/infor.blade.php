@@ -7,36 +7,9 @@
             <div class="movie-info">
                 <div class="block-movie-info movie-info-box">
                     <div class="row">
-                        <div class="col-6 movie-image">
-                            <div class="movie-l-img">
-                                <img itemprop="image" alt="{{$flim->name}}" src="{{$flim->image}}" style="width:100%;height:100%;">
-                                <h2 class="hidden mt-2"></h2>                               
-                                <ul class="btn btn-block">
-                                    @if(Auth::check()){
-                                        <li class="item">
-                                            <form action="{{route('user.boxadd')}}" method="POST">                       
-                                                @csrf
-                                                <input type="hidden" name="flim_id" value="{{$flim->id}}">
-                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Thêm  Vào Hộp</button>
-                                            </form>                                
-                                        </li>
-                                    }
-                                    @else{
-                                        <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" title="{{$flim->name}}" href="{{route('user.boxadd')}}">Thêm vào hộp</a></li>
-                                    }
-                                    @endif
-                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{route('page.videopage',$flim->id)}}">Xem Anime</a></li>
-                                </ul>
-                            </div>
-                            <!-- Bookmark-->
-                            <div class="tools-box">
-                            </div>
-                            <!-- // Bookmark-->
-                        </div>
-                        <div class="col-6 movie-detail">
+                        <div class="col-md-6  movie-detail">
                             <h1 class="movie-title"><span class="title-1" itemprop="name">{{$flim->name}}</span><span class="title-2" itemprop="name">{{$flim->subname}}</span><span class="title-year"> ({{date("d/m/Y",strtotime($flim->created_at))}})</span></h1>
-                            <div class="movie-meta-info">
+                            <div class="movie-meta-info" style="min-height: 250px">
                                 <dl class="movie-dl">
                                     <dt class="movie-dt">Trạng thái: </dt>
                                     <dd class="movie-dd imdb">
@@ -51,7 +24,7 @@
                                     <dd class="movie-dd dd-cat">
                                         @foreach( explode(' ', $flim->category) as $sub)
                                             @if (strlen($sub) > 0)
-                                            <a  href="{{Route('page.pagecate',['name'=>$sub])}}">{{ str_replace('-',' ',$sub)}}</a> 
+                                            <a  href="{{Route('page.pagecate',['name'=>$sub])}}">{{ str_replace('-',' ',$sub)}}</a> &nbsp;
                                             {{-- <a  href="/page/category/{{$sub}}">{{ str_replace('-',' ',$sub)}}</a>, --}}
                                             @else
                                                 
@@ -104,6 +77,34 @@
                                 </b>
                             </div>
                         </div>
+                        <div class="col-md-6  movie-image">
+                            <div class="movie-l-img">
+                                <img itemprop="image" alt="{{$flim->name}}" src="{{$flim->image}}" style="width:100%;height:100%;">
+                                <h2 class="hidden mt-2"></h2>                               
+                                <ul class="btn btn-block">
+                                    @if(Auth::check()){
+                                        <li class="item">
+                                            <form action="{{route('user.boxadd')}}" method="POST">                       
+                                                @csrf
+                                                <input type="hidden" name="flim_id" value="{{$flim->id}}">
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <button id="btn-film-watch" class="btn btn-outline-success" type="submit">Thêm  Vào Hộp</button>
+                                            </form>                                
+                                        </li>
+                                    }
+                                    @else{
+                                        <li class="item"><a id="btn-film-watch" class="btn btn-outline-success" title="{{$flim->name}}" href="{{route('user.boxadd')}}">Thêm vào hộp</a></li>
+                                    }
+                                    @endif
+                                    <li class="item"><a id="btn-film-watch" class="btn btn-outline-danger" title="{{$flim->name}}" href="{{route('page.videopage',$flim->id)}}">Xem Anime</a></li>
+                                </ul>
+                            </div>
+                            <!-- Bookmark-->
+                            <div class="tools-box">
+                            </div>
+                            <!-- // Bookmark-->
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- / Thông tin phim -->

@@ -49,7 +49,7 @@ class PageController extends Controller
     }
 
     public function yearpage($year){
-        $data = DB::table('flim')->where('year',$year)->get();
+        $data = DB::table('flim')->where('year',$year)->orderBy('updated_at','DESC')->get();
 
         $title = "Năm Sản Xuất :".$year." - Anime SQL";
   
@@ -84,8 +84,8 @@ class PageController extends Controller
     }
     public function videobychap($id){
         $idflim = $id;
-        $data = DB::table('chapter')->where('id',$id)->orderBy('updated_at','DESC')->first();
-        $title = DB::table('flim')->where('id',$data->flim_id)->first();
+        $data = DB::table('chapter')->where('flim_id',$id)->orderBy('updated_at','DESC')->first();
+        $title = DB::table('flim')->where('id',$id)->first();
         $listchaprcm = DB::table('chapter')->where('flim_id',$data->flim_id)->orderBy('updated_at','DESC')->get();
         $data2 = DB::table('comment')->join('users','comment.user_id','=','users.id')
         ->select('comment.*', 'users.name')

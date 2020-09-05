@@ -55,18 +55,20 @@ class FlimController extends Controller
         $validatedData = $request->validate([
         'name' => 'bail|required|max:250',
         'subname' => 'bail',
+        'total_chap' => 'bail|integer|gt:0',
         'description' => 'bail|required|min:8',
         'category' => 'bail|required',
         'image' => 'mimes:jpeg,jpg,png,gif|required|max:100000',
         ]);
         $data =($request->except('_token'));
+        //dd($data['category']);
         $sub = "";
-        $test = unserialize(serialize($request['category']));
+        $test =$data['category'];
             foreach ($test as $key => $value) {
                 $sub = $sub."{$value} " ;
         }
         $data['category'] = $sub;
-        
+       
         $image = $data['image'];
        //    dd($image->getRealPath());
         // call service to upload image to imgur.com
@@ -118,7 +120,7 @@ class FlimController extends Controller
         
         $data =($request->except('_token'));
         $sub = "";
-        $test = unserialize(serialize($request['category']));
+        $test =$data['category'];
             foreach ($test as $key => $value) {
                 $sub = $sub."{$value} " ;
         }
@@ -146,6 +148,7 @@ class FlimController extends Controller
     public function destroy($id)
     {
         DB::transaction(function () use($id) {
+        DB::table('boxflim')->where('flim_id',$id)->delete();
         DB::table('chapter')->where('flim_id',$id)->delete();
         DB::table('flim')->where('id',$id)->delete();
         });

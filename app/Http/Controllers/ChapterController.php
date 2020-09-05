@@ -21,7 +21,7 @@ class ChapterController extends Controller
     public function index()
     {
         $data = DB::table('chapter')->orderBy('id','DESC')->get();
-        foreach( $data as $key => $value ){
+        foreach( $data as $value ){
             $flim = DB::table('flim')->where('id',$value->flim_id)->first();          
             $value->name = $flim->name;
         }
@@ -52,7 +52,7 @@ class ChapterController extends Controller
         //dd($request);
         $validatedData = $request->validate([
             'title' => 'bail|required|string',
-            'chap' => 'bail|required',
+            'chap' => 'bail|required|not_in:0',
             'flim_id' => 'bail|required',
             'content' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|required|max:100000',
             ]);

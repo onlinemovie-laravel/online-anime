@@ -7,8 +7,12 @@
                 <form method="POST" id="form-search" action="{{ route('page.searchvideo')}}">
                     @csrf
                     <div>
+                        
                         <input type="text"  class="typeahead form-control" name="name" placeholder="Tìm: tên anime ... " value="" autocomplete="off">
-                        <input style="display: none;" id="searchsubmit" class="" value=" " type="submit">
+                        <button class=" btn-sm " type="submit" style="background: transparent" >
+                            Tìm
+                        </button>
+                        
                     </div>
                 </form>
                 <script type="text/javascript">

@@ -49,7 +49,7 @@
                             <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Image') }}</label>
                             <div class="col-md-10">
                                 <input type="file" name="image" id="exampleInputFile" accept="image/x-png,image/gif,image/jpeg" required oninvalid="this.setCustomValidity('Bạn chưa chọn flie hình ảnh')"
-                                oninput="this.setCustomValidity('')" value="{{old('image')}}">
+                                 value="{{old('image')}}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -59,7 +59,7 @@
                                 <div class="row">
                                     @foreach ($listcategory as $item)
                                     <div class="col-md-3">
-                                        <input  class="ml-md-2 " type="checkbox" id="autoSizingCheck{{$item->name}}" name="category[]" value="{{$item->name}}">
+                                        <input  class="ml-md-2 " type="checkbox" id="autoSizingCheck{{$item->name}}" name="category[]" value="{{$item->name}}" {{ (is_array(old('category')) and in_array($item->name, old('category'))) ? ' checked' : '' }}>
                                         <label class="form-check-label ml-md-2" for="autoSizingCheck{{$item->name}}">{{ str_replace('-',' ',$item->name)}}</label>
                                     </div>
                                     @endforeach

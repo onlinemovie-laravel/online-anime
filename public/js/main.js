@@ -2,6 +2,7 @@
 $(document).ready(function (){
     // var iframe = document.getElementById("myFrame");
     // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    //css
     $('.noneactive').first().addClass('active');
     $('#pagi').each(function() {
         $($(this)).on('click', 'li', function(e){
@@ -16,6 +17,7 @@ $(document).ready(function (){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    //phan trang
     $('a[class="load-flim"]').on('click', function(){
         var num = $(this).attr('aria-details');
         var url = $(this).data('url');
@@ -30,6 +32,19 @@ $(document).ready(function (){
             }
         })
     });
+    //close btn
+    $('button[type="submit"]').on('click', function(){
+        
+    //    console.log('helô');
+       if ($(this).hasClass('btn-primary')) {
+        $(this).css("display","none");
+        return true;
+       } else {
+           
+       }
+       
+    });
+    
     
     setInterval(function(){
         var flimid = $('#box-comment').attr('data');
